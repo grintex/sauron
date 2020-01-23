@@ -1,0 +1,15 @@
+{
+    "name": "grintex/sauron",
+    "description": "Analytics tool to provide insights on the workload of academic personnel",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Fernando Bevilacqua",
+            "email": "fernando.bevilacqua@uffs.edu.br"
+        }
+    ],
+    "require": {
+        "phpoffice/phpspreadsheet": "^1.10"
+    }
+}
