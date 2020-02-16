@@ -25,10 +25,10 @@ class InfoController extends Controller
                                     ->where('lista_docentes_ch', 'like', '%Fernando%')
                                     ->orderBy('ano', 'desc')
                                     ->get();
-
-        var_dump($researchProjects);
-        var_dump($courses);
         
-        //return view('user.profile', ['user' => $users]);
+        return view('info', [
+            'research_projects' => $researchProjects,
+            'courses' => $courses
+        ]);
     }
 }
