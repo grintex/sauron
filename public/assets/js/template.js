@@ -70,6 +70,7 @@ $(".btn.btn-like").on("click", function () {
 });
 
 function purchaseBanner() {
+  return;
   var bannerState = localStorage.getItem('bannerState') ? localStorage.getItem('bannerState') : "enabled";
   if (bannerState == "enabled") {
     $("body").addClass("purchase-banner-active");

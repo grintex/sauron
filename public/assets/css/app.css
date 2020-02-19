@@ -496,3 +496,7 @@ footer {
     white-space: normal !important; 
     word-wrap: break-word;  
 }
+
+h4 {
+  font-size: 1.3em;
+}

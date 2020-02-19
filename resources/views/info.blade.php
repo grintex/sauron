@@ -16,140 +16,9 @@
     <nav class="t-header">
       <div class="t-header-brand-wrapper">
         <a href="index.html">
-          <img class="logo" src="{{ asset('assets/images/logo.svg') }}" alt="">
-          <img class="logo-mini" src="{{ asset('assets/images/logo_mini.svg') }}" alt="">
+          <img class="logo" src="{{ asset('assets/images/logo1.svg') }}" alt="">
+          <img class="logo-mini" src="{{ asset('assets/images/logo_mini1.svg') }}" alt="">
         </a>
-      </div>
-      <div class="t-header-content-wrapper">
-        <div class="t-header-content">
-          <button class="t-header-toggler t-header-mobile-toggler d-block d-lg-none">
-            <i class="mdi mdi-menu"></i>
-          </button>
-          <ul class="nav ml-auto">
-            <li class="nav-item dropdown">
-              <a class="nav-link" href="#" id="notificationDropdown" data-toggle="dropdown" aria-expanded="false">
-                <i class="mdi mdi-bell-outline mdi-1x"></i>
-              </a>
-              <div class="dropdown-menu navbar-dropdown dropdown-menu-right" aria-labelledby="notificationDropdown">
-                <div class="dropdown-header">
-                  <h6 class="dropdown-title">Notifications</h6>
-                  <p class="dropdown-title-text">You have 4 unread notification</p>
-                </div>
-                <div class="dropdown-body">
-                  <div class="dropdown-list">
-                    <div class="icon-wrapper rounded-circle bg-inverse-primary text-primary">
-                      <i class="mdi mdi-alert"></i>
-                    </div>
-                    <div class="content-wrapper">
-                      <small class="name">Storage Full</small>
-                      <small class="content-text">Server storage almost full</small>
-                    </div>
-                  </div>
-                  <div class="dropdown-list">
-                    <div class="icon-wrapper rounded-circle bg-inverse-success text-success">
-                      <i class="mdi mdi-cloud-upload"></i>
-                    </div>
-                    <div class="content-wrapper">
-                      <small class="name">Upload Completed</small>
-                      <small class="content-text">3 Files uploded successfully</small>
-                    </div>
-                  </div>
-                  <div class="dropdown-list">
-                    <div class="icon-wrapper rounded-circle bg-inverse-warning text-warning">
-                      <i class="mdi mdi-security"></i>
-                    </div>
-                    <div class="content-wrapper">
-                      <small class="name">Authentication Required</small>
-                      <small class="content-text">Please verify your password to continue using cloud services</small>
-                    </div>
-                  </div>
-                </div>
-                <div class="dropdown-footer">
-                  <a href="#">View All</a>
-                </div>
-              </div>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link" href="#" id="messageDropdown" data-toggle="dropdown" aria-expanded="false">
-                <i class="mdi mdi-message-outline mdi-1x"></i>
-                <span class="notification-indicator notification-indicator-primary notification-indicator-ripple"></span>
-              </a>
-              <div class="dropdown-menu navbar-dropdown dropdown-menu-right" aria-labelledby="messageDropdown">
-                <div class="dropdown-header">
-                  <h6 class="dropdown-title">Messages</h6>
-                  <p class="dropdown-title-text">You have 4 unread messages</p>
-                </div>
-                <div class="dropdown-body">
-                  <div class="dropdown-list">
-                    <div class="image-wrapper">
-                      <img class="profile-img" src="{{ asset('assets/images/profile/male/image_1.png') }}" alt="profile image">
-                      <div class="status-indicator rounded-indicator bg-success"></div>
-                    </div>
-                    <div class="content-wrapper">
-                      <small class="name">Clifford Gordon</small>
-                      <small class="content-text">Lorem ipsum dolor sit amet.</small>
-                    </div>
-                  </div>
-                  <div class="dropdown-list">
-                    <div class="image-wrapper">
-                      <img class="profile-img" src="{{ asset('assets/images/profile/female/image_2.png') }}" alt="profile image">
-                      <div class="status-indicator rounded-indicator bg-success"></div>
-                    </div>
-                    <div class="content-wrapper">
-                      <small class="name">Rachel Doyle</small>
-                      <small class="content-text">Lorem ipsum dolor sit amet.</small>
-                    </div>
-                  </div>
-                  <div class="dropdown-list">
-                    <div class="image-wrapper">
-                      <img class="profile-img" src="{{ asset('assets/images/profile/male/image_3.png') }}" alt="profile image">
-                      <div class="status-indicator rounded-indicator bg-warning"></div>
-                    </div>
-                    <div class="content-wrapper">
-                      <small class="name">Lewis Guzman</small>
-                      <small class="content-text">Lorem ipsum dolor sit amet.</small>
-                    </div>
-                  </div>
-                </div>
-                <div class="dropdown-footer">
-                  <a href="#">View All</a>
-                </div>
-              </div>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link" href="#" id="appsDropdown" data-toggle="dropdown" aria-expanded="false">
-                <i class="mdi mdi-apps mdi-1x"></i>
-              </a>
-              <div class="dropdown-menu navbar-dropdown dropdown-menu-right" aria-labelledby="appsDropdown">
-                <div class="dropdown-header">
-                  <h6 class="dropdown-title">Apps</h6>
-                  <p class="dropdown-title-text mt-2">Authentication required for 3 apps</p>
-                </div>
-                <div class="dropdown-body border-top pt-0">
-                  <a class="dropdown-grid">
-                    <i class="grid-icon mdi mdi-jira mdi-2x"></i>
-                    <span class="grid-tittle">Jira</span>
-                  </a>
-                  <a class="dropdown-grid">
-                    <i class="grid-icon mdi mdi-trello mdi-2x"></i>
-                    <span class="grid-tittle">Trello</span>
-                  </a>
-                  <a class="dropdown-grid">
-                    <i class="grid-icon mdi mdi-artstation mdi-2x"></i>
-                    <span class="grid-tittle">Artstation</span>
-                  </a>
-                  <a class="dropdown-grid">
-                    <i class="grid-icon mdi mdi-bitbucket mdi-2x"></i>
-                    <span class="grid-tittle">Bitbucket</span>
-                  </a>
-                </div>
-                <div class="dropdown-footer">
-                  <a href="#">View All</a>
-                </div>
-              </div>
-            </li>
-          </ul>
-        </div>
       </div>
     </nav>
     <!-- partial -->
@@ -241,9 +110,10 @@
           <div class="content-viewport">
             <!-- Informações gerais -->
             <div class="row">
-              <div class="col-12 py-5">
-                <h2>Informações gerais</h2>
-                <p>Resumo do lattes da pessoas, com informações coletadas do XML exportado da plataforma e importando de forma automatizada no sistema. Talvez no futuro a pessoa consiga editar esse texto aqui, mas a ideia é fazer apenas um compilador de dados, não um criador de conteúdo. Dessa forma, a pessoa precisa explicitamente alterar os dados em outros locais.</p>
+              <div class="col-12 py-4">
+                <h2 class="mb-3">Apresentação</h2>
+                <p>Doutor em Ciência da Computação pelo programa de PhD em Tecnologia da Informação da Universidade de Skövde (HiS), Suécia. Mestre em Computação pelo Programa de Pós-Graduação em Informática da Universidade Federal de Santa Maria (UFSM). Bacharel em Ciência da Computação pela Universidade Federal de Santa Maria (UFSM). Professor adjunto do curso de Ciência da Computação na Universidade Federal da Fronteira Sul (UFFS), campus Chapecó, atuando principalmente nas áreas de Interação Humano-Computador (IHC), Visão Computacional e Computação Gráfica focados em jogos digitais.</p>
+                <p class="text-muted pt-1"><small><i class="mdi mdi-information-outline"></i> Fonte: Currículo Lattes</small></p>
               </div>
             </div>
 
@@ -251,95 +121,36 @@
                 Ensino
             -------------------------------------------------------------------------------------------------->
             <div class="row">
-              <div class="col-12 py-5">
-                <h3>Ensino</h3>
+              <div class="col-12 pt-5">
+                <h3><i class="mdi mdi-school mdi-2x"></i> Ensino</h3>
                 <p class="text-gray">Atividades de ensino relacionadas à graduação e pós-graduação.</p>
                 <hr />
               </div>
             </div>
 
             <div class="row">
-              <div class="col-12 py-5">
-                <h4>Docência</h4>
+              <div class="col-12 py-4">
+                <h4><i class="mdi mdi-teach"></i> Docência</h4>
                 <p class="text-gray">Ensino em sala de aula.</p>
               </div>
             </div>
 
             <div class="row">
-              <div class="col-md-3 col-sm-6 col-6 equel-grid">
-                <div class="grid">
-                  <div class="grid-body text-gray">
-                    <div class="d-flex justify-content-between">
-                      <p>30%</p>
-                      <p>+06.2%</p>
-                    </div>
-                    <p class="text-black">Traffic</p>
-                    <div class="wrapper w-50 mt-4">
-                      <canvas height="45" id="stat-line_1"></canvas>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-3 col-sm-6 col-6 equel-grid">
-                <div class="grid">
-                  <div class="grid-body text-gray">
-                    <div class="d-flex justify-content-between">
-                      <p>43%</p>
-                      <p>+15.7%</p>
-                    </div>
-                    <p class="text-black">Conversion</p>
-                    <div class="wrapper w-50 mt-4">
-                      <canvas height="45" id="stat-line_2"></canvas>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-3 col-sm-6 col-6 equel-grid">
-                <div class="grid">
-                  <div class="grid-body text-gray">
-                    <div class="d-flex justify-content-between">
-                      <p>23%</p>
-                      <p>+02.7%</p>
-                    </div>
-                    <p class="text-black">Bounce Rate</p>
-                    <div class="wrapper w-50 mt-4">
-                      <canvas height="45" id="stat-line_3"></canvas>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-3 col-sm-6 col-6 equel-grid">
-                <div class="grid">
-                  <div class="grid-body text-gray">
-                    <div class="d-flex justify-content-between">
-                      <p>75%</p>
-                      <p>- 53.34%</p>
-                    </div>
-                    <p class="text-black">Marketing</p>
-                    <div class="wrapper w-50 mt-4">
-                      <canvas height="45" id="stat-line_4"></canvas>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="row">
               <div class="col-lg-4 col-md-6 equel-grid">
                 <div class="grid">
                   <div class="grid-body d-flex flex-column h-100">
                     <div class="wrapper">
                       <div class="d-flex justify-content-between">
                         <div class="split-header py-2">
-                          <img class="img-ss mt-1 mb-1 mr-2" src="{{ asset('assets/images/social-icons/instagram.svg') }}" alt="instagram">
-                          <p class="card-title">CCRs ministrados por ano</p>
+                          <i class="mdi mdi-calendar-clock mdi-2x mr-2"></i>
+                          <p class="card-title">CCRs por ano</p>
                         </div>
                         <div class="wrapper">
                         </div>
                       </div>
                     </div>
                     <div class="mt-auto">
-                      <canvas class="curved-mode chart" id="courses-year" data-provider="academic_stats.year" data-label-prop="label" data-value-prop="count_ccr" data-datasets-label="CCRs" data-chart-type="bar" height="400"></canvas>
+                      <canvas class="curved-mode chart" id="courses-year" data-provider="academic_stats.year" data-label-prop="label" data-value-prop="count_ccr" data-datasets-label="CCRs" data-chart-type="bar" height="300"></canvas>
                     </div>
                   </div>
                 </div>
@@ -350,15 +161,15 @@
                     <div class="wrapper">
                       <div class="d-flex justify-content-between">
                         <div class="split-header py-2">
-                          <img class="img-ss mt-1 mb-1 mr-2" src="{{ asset('assets/images/social-icons/instagram.svg') }}" alt="instagram">
-                          <p class="card-title">CCRs ministrados por semestre</p>
+                          <i class="mdi mdi-calendar-clock mdi-2x mr-2"></i>
+                          <p class="card-title">CCRs por semestre</p>
                         </div>
                         <div class="wrapper">
                         </div>
                       </div>
                     </div>
                     <div class="mt-auto">
-                      <canvas class="curved-mode chart" id="courses-semester" data-provider="academic_stats.semester" data-label-prop="label" data-value-prop="count_ccr" data-datasets-label="CCRs" data-chart-type="bar" data-max-value="7" height="400"></canvas>
+                      <canvas class="curved-mode chart" id="courses-semester" data-provider="academic_stats.semester" data-label-prop="label" data-value-prop="count_ccr" data-datasets-label="CCRs" data-chart-type="bar" data-max-value="7" height="300"></canvas>
                     </div>
                   </div>
                 </div>
@@ -369,15 +180,15 @@
                     <div class="wrapper">
                       <div class="d-flex justify-content-between">
                         <div class="split-header py-2">
-                          <img class="img-ss mt-1 mb-1 mr-2" src="{{ asset('assets/images/social-icons/instagram.svg') }}" alt="instagram">
-                          <p class="card-title">Créditos ministrados por semestre</p>
+                          <i class="mdi mdi-calendar-clock mdi-2x mr-2"></i>
+                          <p class="card-title">Créditos por semestre</p>
                         </div>
                         <div class="wrapper">
                         </div>
                       </div>
                     </div>
                     <div class="mt-auto">
-                      <canvas class="curved-mode chart" id="courses-semester1" data-provider="academic_stats.semester" data-label-prop="label" data-value-prop="sum_cr" data-datasets-label="CCRs" data-chart-type="line" height="400"></canvas>
+                      <canvas class="curved-mode chart" id="courses-semester1" data-provider="academic_stats.semester" data-label-prop="label" data-value-prop="sum_cr" data-datasets-label="CCRs" data-chart-type="line" height="300"></canvas>
                     </div>
                   </div>
                 </div>
@@ -388,7 +199,7 @@
                 <div class="col-md-12 equel-grid">
                     <div class="grid">
                         <div class="grid-body py-3">
-                            <p class="card-title ml-n1">Componentes Curriculares Ministrados</p>
+                          <p class="card-title ml-n1"><i class="mdi mdi-library-books mr-2"></i> Componentes Curriculares Ministrados</p>
                         </div>
                         <div class="table-responsive">
                             <table class="table table-hover table-sm">
@@ -410,12 +221,10 @@
                                             <span class="text-gray">
                                             <span class="status-indicator rounded-indicator small bg-primary"></span>{{ $course->desc_turma }}</span>
                                         </td>
-                                        <td>{{ $course->curso_turma }}</td>
-                                        <td>
-                                            {{ $course->sit_turma }}
-                                        </td>
+                                        <td><small class="text-gray">{{ $course->curso_turma }}</small></td>
+                                        <td>{{ $course->sit_turma }}</td>
                                         <td class="text-center">{{ $course->ch_ccr }}</td>
-                                        <td class="text-center">?</td>
+                                        <td class="text-center">{{ $course->ch_docente }}</td>
                                         <td class="text-center">{{ $course->ano }}.{{ $course->semestre }}</td>
                                     </tr>
                                 @empty
@@ -433,7 +242,7 @@
             -------------------------------------------------------------------------------------------------->
             <div class="row">
               <div class="col-12 py-5">
-                <h3>Pesquisa</h3>
+                <h3><i class="mdi mdi-atom mdi-3x"></i> Pesquisa</h3>
                 <p class="text-gray">Atividades de pesquisa como projetos e publicações científicas.</p>
                 <hr />
               </div>
@@ -441,7 +250,7 @@
 
             <div class="row">
               <div class="col-12 py-5">
-                <h4>Projetos</h4>
+                <h4><i class="mdi mdi-flask-empty-outline mdi-2x"></i> Projetos</h4>
                 <p class="text-gray">Projetos de pesquisa institucionalizados.</p>
               </div>
             </div>
@@ -489,7 +298,7 @@
 
             <div class="row">
               <div class="col-12 py-5">
-                <h4>Produção científica</h4>
+                <h4><i class="mdi mdi-book-outline mdi-2x"></i> Produção científica</h4>
                 <p class="text-gray">Publicação de artigos, completos ou resusmos, em conferências, simpósios e revistas científicas com revisão por pares.</p>
               </div>
             </div>
@@ -499,7 +308,7 @@
                 <div class="grid">
                   <div class="grid-body">
                     <div class="split-header">
-                      <p class="card-title">Publicações</p>
+                      <p class="card-title">Artigos completos em revistas científicas</p>
                     </div>
                     <div class="vertical-timeline-wrapper">
                       <div class="timeline-vertical">
@@ -523,9 +332,6 @@
                       </div>
                     </div>
                   </div>
-                  <a class="border-top px-3 py-2 d-block text-gray" href="#">
-                    <small class="font-weight-medium"><i class="mdi mdi-chevron-down mr-2"></i> View All </small>
-                  </a>
                 </div>
               </div>
 
@@ -535,17 +341,16 @@
                     <div class="wrapper">
                       <div class="d-flex justify-content-between">
                         <div class="split-header">
-                          <img class="img-ss mt-1 mb-1 mr-2" src="{{ asset('assets/images/social-icons/instagram.svg') }}" alt="instagram">
+                          <i class="mdi mdi-certificate mdi-2x mr-2"></i>
                           <p class="card-title">Citações</p>
                         </div>
                         <div class="wrapper">
-                          <button class="btn action-btn btn-xs component-flat pr-0" type="button"><i class="mdi mdi-access-point text-muted mdi-2x"></i></button>
-                          <button class="btn action-btn btn-xs component-flat pr-0" type="button"><i class="mdi mdi-cloud-download-outline text-muted mdi-2x"></i></button>
+                          <i class="mdi mdi-information-outline mdi-2x text-muted"></i>
                         </div>
                       </div>
                       <div class="d-flex align-items-end pt-2 mb-4">
-                        <h4>16.2K</h4>
-                        <p class="ml-2 text-muted">New Followers</p>
+                        <h4>213</h4>
+                        <p class="ml-2 text-muted">citações no total nos últimos 5 anos.</p>
                       </div>
                     </div>
                     <div class="mt-auto">
