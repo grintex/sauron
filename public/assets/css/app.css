@@ -492,4 +492,7 @@ footer {
   .page-body .page-content-wrapper {
     padding: 80px 20px 0px 20px; } }
 
-/*# sourceMappingURL=style.css.map */
+.word-wrap {
+    white-space: normal !important; 
+    word-wrap: break-word;  
+}
