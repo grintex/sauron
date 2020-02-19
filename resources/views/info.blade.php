@@ -332,6 +332,26 @@
                       <div class="d-flex justify-content-between">
                         <div class="split-header">
                           <img class="img-ss mt-1 mb-1 mr-2" src="{{ asset('assets/images/social-icons/instagram.svg') }}" alt="instagram">
+                          <p class="card-title">CCRs por ano</p>
+                        </div>
+                        <div class="wrapper">
+                          <button class="btn action-btn btn-xs component-flat pr-0" type="button"><i class="mdi mdi-cloud-download-outline text-muted mdi-2x"></i></button>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="mt-auto">
+                      <canvas class="curved-mode" id="followers-bar-chart" height="220"></canvas>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4 col-md-6 equel-grid">
+                <div class="grid">
+                  <div class="grid-body d-flex flex-column h-100">
+                    <div class="wrapper">
+                      <div class="d-flex justify-content-between">
+                        <div class="split-header">
+                          <img class="img-ss mt-1 mb-1 mr-2" src="{{ asset('assets/images/social-icons/instagram.svg') }}" alt="instagram">
                           <p class="card-title">Followers Growth</p>
                         </div>
                         <div class="wrapper">
@@ -347,16 +367,6 @@
                     <div class="mt-auto">
                       <canvas class="curved-mode" id="followers-bar-chart" height="220"></canvas>
                     </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-4 col-md-6 equel-grid">
-                <div class="grid">
-                  <div class="grid-body">
-                    <p class="card-title">Campaign</p>
-                    <div id="radial-chart"></div>
-                    <h4 class="text-center">$23,350.00</h4>
-                    <p class="text-center text-muted">Used balance this billing cycle</p>
                   </div>
                 </div>
               </div>
