@@ -68,7 +68,7 @@ class InfoController extends Controller
                 
                 $statEntry = array(
                     'label'     => $label,
-                    //'entries'   => $values,
+                    'entries'   => $values,
                     'count_ccr' => $count,
                     'sum_ch'    => $sumCh,
                     'sum_cr'    => $sumCr,

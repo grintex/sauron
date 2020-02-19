@@ -330,17 +330,16 @@
                   <div class="grid-body d-flex flex-column h-100">
                     <div class="wrapper">
                       <div class="d-flex justify-content-between">
-                        <div class="split-header">
+                        <div class="split-header py-2">
                           <img class="img-ss mt-1 mb-1 mr-2" src="{{ asset('assets/images/social-icons/instagram.svg') }}" alt="instagram">
-                          <p class="card-title">CCRs por ano</p>
+                          <p class="card-title">CCRs ministrados por ano</p>
                         </div>
                         <div class="wrapper">
-                          <button class="btn action-btn btn-xs component-flat pr-0" type="button"><i class="mdi mdi-cloud-download-outline text-muted mdi-2x"></i></button>
                         </div>
                       </div>
                     </div>
                     <div class="mt-auto">
-                      <canvas class="curved-mode" id="followers-bar-chart" height="220"></canvas>
+                      <canvas class="curved-mode chart" id="courses-year" data-provider="academic_stats.year" data-label-prop="label" data-value-prop="count_ccr" data-datasets-label="CCRs" data-chart-type="bar" height="400"></canvas>
                     </div>
                   </div>
                 </div>
@@ -350,89 +349,37 @@
                   <div class="grid-body d-flex flex-column h-100">
                     <div class="wrapper">
                       <div class="d-flex justify-content-between">
-                        <div class="split-header">
+                        <div class="split-header py-2">
                           <img class="img-ss mt-1 mb-1 mr-2" src="{{ asset('assets/images/social-icons/instagram.svg') }}" alt="instagram">
-                          <p class="card-title">Followers Growth</p>
+                          <p class="card-title">CCRs ministrados por semestre</p>
                         </div>
                         <div class="wrapper">
-                          <button class="btn action-btn btn-xs component-flat pr-0" type="button"><i class="mdi mdi-access-point text-muted mdi-2x"></i></button>
-                          <button class="btn action-btn btn-xs component-flat pr-0" type="button"><i class="mdi mdi-cloud-download-outline text-muted mdi-2x"></i></button>
                         </div>
-                      </div>
-                      <div class="d-flex align-items-end pt-2 mb-4">
-                        <h4>16.2K</h4>
-                        <p class="ml-2 text-muted">New Followers</p>
                       </div>
                     </div>
                     <div class="mt-auto">
-                      <canvas class="curved-mode" id="followers-bar-chart" height="220"></canvas>
+                      <canvas class="curved-mode chart" id="courses-semester" data-provider="academic_stats.semester" data-label-prop="label" data-value-prop="count_ccr" data-datasets-label="CCRs" data-chart-type="bar" data-max-value="7" height="400"></canvas>
                     </div>
                   </div>
                 </div>
               </div>
               <div class="col-lg-4 col-md-6 equel-grid">
-                <div class="grid table-responsive">
-                  <table class="table table-stretched">
-                    <thead>
-                      <tr>
-                        <th>Symbol</th>
-                        <th>Price</th>
-                        <th>Change</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>
-                          <p class="mb-n1 font-weight-medium">AAPL</p>
-                          <small class="text-gray">Apple Inc.</small>
-                        </td>
-                        <td class="font-weight-medium">198.18</td>
-                        <td class="text-danger font-weight-medium">
-                          <div class="badge badge-success">-1.39%</div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <p class="mb-n1 font-weight-medium">NKE</p>
-                          <small class="text-gray">Nike,Inc.</small>
-                        </td>
-                        <td class="font-weight-medium">03.95</td>
-                        <td class="text-danger font-weight-medium">
-                          <div class="badge badge-danger">-1.17%</div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <p class="mb-n1 font-weight-medium">NSEI</p>
-                          <small class="text-gray">Nifty 50</small>
-                        </td>
-                        <td class="font-weight-medium">11,278</td>
-                        <td class="text-danger font-weight-medium">
-                          <div class="badge badge-success">-0.24%</div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <p class="mb-n1 font-weight-medium">BA</p>
-                          <small class="text-gray">The Boeing Company</small>
-                        </td>
-                        <td class="font-weight-medium">354.67</td>
-                        <td class="text-success font-weight-medium">
-                          <div class="badge badge-success">+0.15%</div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <p class="mb-n1 font-weight-medium">SBUX</p>
-                          <small class="text-gray">Starbucks Corporation</small>
-                        </td>
-                        <td class="font-weight-medium">08.42</td>
-                        <td class="text-success font-weight-medium">
-                          <div class="badge badge-success">+0.67%</div>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
+                <div class="grid">
+                  <div class="grid-body d-flex flex-column h-100">
+                    <div class="wrapper">
+                      <div class="d-flex justify-content-between">
+                        <div class="split-header py-2">
+                          <img class="img-ss mt-1 mb-1 mr-2" src="{{ asset('assets/images/social-icons/instagram.svg') }}" alt="instagram">
+                          <p class="card-title">Créditos ministrados por semestre</p>
+                        </div>
+                        <div class="wrapper">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="mt-auto">
+                      <canvas class="curved-mode chart" id="courses-semester1" data-provider="academic_stats.semester" data-label-prop="label" data-value-prop="sum_cr" data-datasets-label="CCRs" data-chart-type="line" height="400"></canvas>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -647,17 +594,21 @@
     </div>
     <!--page body ends -->
 
-    <!-- plugins:js -->
+    <script>
+      var APP_DATA = {
+        academic_stats: @json($academic_stats),
+      };
+    </script>
+
+    <script src="{{ asset('assets/vendors/jquery/jquery-3.4.1.min.js') }}"></script>
     <script src="{{ asset('assets/vendors/js/core.js') }}"></script>
-    <!-- endinject -->
-    <!-- Vendor Js For This Page Ends-->
     <script src="{{ asset('assets/vendors/apexcharts/apexcharts.min.js') }}"></script>
     <script src="{{ asset('assets/vendors/chartjs/Chart.min.js') }}"></script>
+
     <script src="{{ asset('assets/js/charts/chartjs.addon.js') }}"></script>
-    <!-- Vendor Js For This Page Ends-->
-    <!-- build:js -->
     <script src="{{ asset('assets/js/template.js') }}"></script>
     <script src="{{ asset('assets/js/dashboard.js') }}"></script>
-    <!-- endbuild -->
+    <script src="{{ asset('assets/js/app.js') }}"></script>
+
   </body>
 </html>
