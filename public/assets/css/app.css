@@ -333,12 +333,8 @@
 
 /* Footer */
 footer {
-  position: absolute;
-  bottom: 0px;
-  left: 0;
-  right: 0;
-  padding: 2rem 2.5rem;
   max-width: 1140px;
+  margin-top: 8em;
   margin-left: auto;
   margin-right: auto; }
   @media (max-width: 991.98px) {

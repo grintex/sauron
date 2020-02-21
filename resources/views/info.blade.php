@@ -35,60 +35,38 @@
           </div>
         </div>
         <ul class="navigation-menu">
-          <li class="nav-category-divider">MAIN</li>
+          <li class="nav-category-divider">INFORMAÇÕES</li>
           <li>
-            <a href="index.html">
-              <span class="link-title">Dashboard</span>
-              <i class="mdi mdi-gauge link-icon"></i>
+            <a href="#apresentacao">
+              <span class="link-title">Apresentação</span>
+              <i class="mdi mdi-account link-icon"></i>
             </a>
           </li>
           <li>
-            <a href="#sample-pages" data-toggle="collapse" aria-expanded="false">
-              <span class="link-title">Sample Pages</span>
-              <i class="mdi mdi-flask link-icon"></i>
+            <a href="#menu-ensino" data-toggle="collapse" aria-expanded="false">
+              <span class="link-title">Ensino</span>
+              <i class="mdi mdi-school link-icon"></i>
             </a>
-            <ul class="collapse navigation-submenu" id="sample-pages">
+            <ul class="collapse navigation-submenu" id="menu-ensino">
               <li>
-                <a href="pages/sample-pages/login_1.html" target="_blank">Login</a>
-              </li>
-              <li>
-                <a href="pages/sample-pages/error_2.html" target="_blank">Error</a>
+                <a href="#ensino-docencia">Docência</a>
               </li>
             </ul>
           </li>
           <li>
-            <a href="#ui-elements" data-toggle="collapse" aria-expanded="false">
-              <span class="link-title">UI Elements</span>
-              <i class="mdi mdi-bullseye link-icon"></i>
+            <a href="#menu-pesquisa" data-toggle="collapse" aria-expanded="false">
+              <span class="link-title">Pesquisa</span>
+              <i class="mdi mdi-atom link-icon"></i>
             </a>
-            <ul class="collapse navigation-submenu" id="ui-elements">
-              <li>
-                <a href="pages/ui-components/buttons.html">Buttons</a>
-              </li>
-              <li>
-                <a href="pages/ui-components/tables.html">Tables</a>
-              </li>
-              <li>
-                <a href="pages/ui-components/typography.html">Typography</a>
-              </li>
+            <ul class="collapse navigation-submenu" id="menu-pesquisa">
+              <li><a href="#pesquisa-projetos">Projetos</a></li>
+              <li><a href="#pesquisa-producao-cientifica">Produção científica</a></li>
             </ul>
           </li>
           <li>
-            <a href="pages/forms/form-elements.html">
-              <span class="link-title">Forms</span>
-              <i class="mdi mdi-clipboard-outline link-icon"></i>
-            </a>
-          </li>
-          <li>
-            <a href="pages/charts/chartjs.html">
-              <span class="link-title">Charts</span>
-              <i class="mdi mdi-chart-donut link-icon"></i>
-            </a>
-          </li>
-          <li>
-            <a href="pages/icons/material-icons.html">
-              <span class="link-title">Icons</span>
-              <i class="mdi mdi-flower-tulip-outline link-icon"></i>
+            <a href="#administrativo">
+              <span class="link-title">Administrativo</span>
+              <i class="mdi mdi-office-building link-icon"></i>
             </a>
           </li>
           <li class="nav-category-divider">DOCS</li>
@@ -99,10 +77,6 @@
             </a>
           </li>
         </ul>
-        <div class="sidebar-upgrade-banner">
-          <p class="text-gray">Upgrade to <b class="text-primary">PRO</b> for more exciting features</p>
-          <a class="btn upgrade-btn" target="_blank" href="http://www.uxcandy.co/product/label-pro-admin-template/">Upgrade to PRO</a>
-        </div>
       </div>
       <!-- partial -->
       <div class="page-content-wrapper">
@@ -111,9 +85,9 @@
             <!-- Informações gerais -->
             <div class="row">
               <div class="col-12 py-4">
-                <h2 class="mb-3">Apresentação</h2>
+                <h2 class="mb-3"><i class="mdi mdi-account mdi-3x text-info"></i> Apresentação</h2>
                 <p>Doutor em Ciência da Computação pelo programa de PhD em Tecnologia da Informação da Universidade de Skövde (HiS), Suécia. Mestre em Computação pelo Programa de Pós-Graduação em Informática da Universidade Federal de Santa Maria (UFSM). Bacharel em Ciência da Computação pela Universidade Federal de Santa Maria (UFSM). Professor adjunto do curso de Ciência da Computação na Universidade Federal da Fronteira Sul (UFFS), campus Chapecó, atuando principalmente nas áreas de Interação Humano-Computador (IHC), Visão Computacional e Computação Gráfica focados em jogos digitais.</p>
-                <p class="text-muted pt-1"><small><i class="mdi mdi-information-outline"></i> Fonte: Currículo Lattes</small></p>
+                <p class="text-muted pt-1"><small><i class="mdi mdi-information-outline"></i> Fonte: Currículo Lattes (obtido em 20/02/2020)</small></p>
               </div>
             </div>
 
@@ -122,7 +96,7 @@
             -------------------------------------------------------------------------------------------------->
             <div class="row">
               <div class="col-12 pt-5">
-                <h3><i class="mdi mdi-school mdi-2x"></i> Ensino</h3>
+                <h3><i class="mdi mdi-school mdi-2x text-info"></i> Ensino</h3>
                 <p class="text-gray">Atividades de ensino relacionadas à graduação e pós-graduação.</p>
                 <hr />
               </div>
@@ -130,7 +104,7 @@
 
             <div class="row">
               <div class="col-12 py-4">
-                <h4><i class="mdi mdi-teach"></i> Docência</h4>
+                <h4><i class="mdi mdi-teach text-info"></i> Docência</h4>
                 <p class="text-gray">Ensino em sala de aula.</p>
               </div>
             </div>
@@ -241,69 +215,77 @@
                 Pesquisa
             -------------------------------------------------------------------------------------------------->
             <div class="row">
-              <div class="col-12 py-5">
-                <h3><i class="mdi mdi-atom mdi-3x"></i> Pesquisa</h3>
+              <div class="col-12 py-3">
+                <h3><i class="mdi mdi-atom mdi-3x text-info"></i> Pesquisa</h3>
                 <p class="text-gray">Atividades de pesquisa como projetos e publicações científicas.</p>
                 <hr />
               </div>
             </div>
 
             <div class="row">
-              <div class="col-12 py-5">
-                <h4><i class="mdi mdi-flask-empty-outline mdi-2x"></i> Projetos</h4>
+              <div class="col-12 py-1 mb-3">
+                <h4><i class="mdi mdi-flask-empty-outline mdi-2x text-info"></i> Projetos</h4>
                 <p class="text-gray">Projetos de pesquisa institucionalizados.</p>
               </div>
             </div>
 
             <div class="row">
                 <div class="col-md-12 equel-grid">
-                    <div class="grid">
-                        <div class="table-responsive">
-                            <table class="table table-hover table-lg">
-                            <thead>
-                                <tr class="solid-header">
-                                    <th style="width: 5%;">Data</th>
-                                    <th style="width: 15%;">Registro</th>
-                                    <th style="width: 65%;">Título</th>
-                                    <th style="width: 5%;">Campus</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @forelse ($research_projects as $project)
-                                    <tr>
-                                        <td>{{ $project->projeto_registro }}</td> 
-                                        <td class="word-wrap">
-                                            <small class="text-black font-weight-medium d-block">{{ $project->projeto_registro }}</small>
-                                            <span class="text-gray">
-                                                {{ $project->modalidade }}
-                                            </span>
-                                        </td>
-                                        <td class="word-wrap">
-                                            <small class="text-black font-weight-medium d-block">{{ $project->projeto_titulo }}</small>
-                                            <span class="text-gray">
-                                                <span class="status-indicator rounded-indicator small bg-primary"></span> {{ $project->desc_area_cnpq }}
-                                            </span>
-                                        </td> 
-                                        <td>{{ $project->nome_campus }}</td> 
-                                    </tr>
-                                @empty
-                                    <p>Esse docente não está vinculado a projetos de pesquisa conhecidos pela instituição.</p>
-                                @endforelse
-                            </tbody>
-                            </table>
-                        </div>
-                    </div>
+                    @if (count($research_projects) === 0)
+                      <p><i class="mdi mdi-alert-circle-outline text-danger"></i> Esse docente não está vinculado a projetos de pesquisa conhecidos pela instituição.</p>
+                    @else
+                      <div class="grid">
+                          <div class="table-responsive">
+                              <table class="table table-hover table-lg">
+                              <thead>
+                                  <tr class="solid-header">
+                                      <th style="width: 5%;">Data</th>
+                                      <th style="width: 15%;">Registro</th>
+                                      <th style="width: 65%;">Título</th>
+                                      <th style="width: 5%;">Campus</th>
+                                  </tr>
+                              </thead>
+                              <tbody>
+                                  @foreach  ($research_projects as $project)
+                                      <tr>
+                                          <td>{{ $project->projeto_registro }}</td> 
+                                          <td class="word-wrap">
+                                              <small class="text-black font-weight-medium d-block">{{ $project->projeto_registro }}</small>
+                                              <span class="text-gray">
+                                                  {{ $project->modalidade }}
+                                              </span>
+                                          </td>
+                                          <td class="word-wrap">
+                                              <small class="text-black font-weight-medium d-block">{{ $project->projeto_titulo }}</small>
+                                              <span class="text-gray">
+                                                  <span class="status-indicator rounded-indicator small bg-primary"></span> {{ $project->desc_area_cnpq }}
+                                              </span>
+                                          </td> 
+                                          <td>{{ $project->nome_campus }}</td> 
+                                      </tr>
+                                  @endforeach
+                              </tbody>
+                              </table>
+                          </div>
+                      </div>
+                    @endif
                 </div>
             </div>
 
             <div class="row">
-              <div class="col-12 py-5">
-                <h4><i class="mdi mdi-book-outline mdi-2x"></i> Produção científica</h4>
+              <div class="col-12 py-2 mt-4">
+                <h4><i class="mdi mdi-book-outline mdi-2x text-info"></i> Produção científica</h4>
                 <p class="text-gray">Publicação de artigos, completos ou resusmos, em conferências, simpósios e revistas científicas com revisão por pares.</p>
               </div>
             </div>
 
             <div class="row">
+              <div class="col-12"> 
+                  <p class="text-gray"><i class="mdi mdi-alert-box-outline mdi-2x"></i> No momento, informações sobre publicações científicas não estão disponíveis.</p>
+              </div>
+            </div>  
+
+            <div class="row" style="display:none;">
               <div class="col-md-8 equel-grid">
                 <div class="grid">
                   <div class="grid-body">
@@ -365,31 +347,34 @@
                 Administrativo
             -------------------------------------------------------------------------------------------------->
             <div class="row">
-              <div class="col-12 py-5">
-                <h3>Administrativo</h3>
+              <div class="col-12 py-2 mt-5">
+                <h3><i class="mdi mdi-office-building mdi-2x text-info"></i>Administrativo</h3>
                 <p class="text-gray">Atividades ligadas majoritariamente à administração e gerência das atividades públicas, como coordenação de curso, direção, membro de comissão/colegiado/etc.</p>
                 <hr />
               </div>
             </div>
             <div class="row">
               <div class="col-12"> 
-                  <p>No momento, informações administrativas não estão disponíveis.</p>               
+                  <p class="text-gray"><i class="mdi mdi-alert-box-outline mdi-2x"></i> No momento, informações administrativas não estão disponíveis.</p>
               </div>
             </div>  
         </div>
         <!-- content viewport ends -->
         <!-- partial:partials/_footer.html -->
         <footer class="footer">
-          <div class="row">
-            <div class="col-sm-6 text-center text-sm-right order-sm-1">
-              <ul class="text-gray">
-                <li><a href="#">Terms of use</a></li>
-                <li><a href="#">Privacy Policy</a></li>
+          <div class="row pt-15">
+            <div class="col-sm-7 text-center text-sm-right order-sm-1">
+              <ul class="text-gray pt-3">
+                <li><a href="https://www.uffs.edu.br/">UFFS</a></li>
+                <li><a href="https://dados.uffs.edu.br/">Dados Abertos UFFS</a></li>
+                <li><a href="http://www.portaltransparencia.gov.br">Portal da Transparência</a></li>
+                
               </ul>
             </div>
-            <div class="col-sm-6 text-center text-sm-left mt-3 mt-sm-0">
-              <small class="text-muted d-block">Copyright © 2019 <a href="http://www.uxcandy.co" target="_blank">UXCANDY</a>. All rights reserved</small>
-              <small class="text-gray mt-2">Handcrafted With <i class="mdi mdi-heart text-danger"></i></small>
+            <div class="col-sm-5 text-center text-sm-left mt-3 mt-sm-0">
+              <p class="text-gray mb-2"><strong>Sobre</strong></p>
+              <small class="text-muted d-block">Esse site é uma visualização dos dados contidos no <a href="https://dados.uffs.edu.br" target="_blank">Portal de Dados Abertos da UFFS</a>, que promove a abertura de dados públicos institucionais. Ele está embasado no Plano de Dados Abertos da UFFS de Janeiro de 2017 e segue determinação do <a href="http://www.planalto.gov.br/ccivil_03/_Ato2015-2018/2016/Decreto/D8777.htm" target="_blank">Decreto no 8.777, de 11 de maio de 2016.</small>
+              <small class="text-gray mt-2"> <i class="mdi mdi-user text-danger"></i></small>
             </div>
           </div>
         </footer>
