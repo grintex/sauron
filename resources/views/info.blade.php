@@ -30,7 +30,7 @@
             <img class="profile-img img-lg rounded-circle" src="{{ asset('assets/images/profile/male/image_1.png') }}" alt="profile image">
           </div>
           <div class="info-wrapper">
-            <p class="user-name">Fernando Bevilacqua</p>
+            <p class="user-name">{{ $user->name }}</p>
             <p class="text-muted">Ciência da Computação<br />Chapecó, SC</p>
           </div>
         </div>
@@ -86,7 +86,7 @@
             <div class="row">
               <div class="col-12 py-4">
                 <h2 class="mb-3"><i class="mdi mdi-account mdi-3x text-info"></i> Apresentação</h2>
-                <p>Doutor em Ciência da Computação pelo programa de PhD em Tecnologia da Informação da Universidade de Skövde (HiS), Suécia. Mestre em Computação pelo Programa de Pós-Graduação em Informática da Universidade Federal de Santa Maria (UFSM). Bacharel em Ciência da Computação pela Universidade Federal de Santa Maria (UFSM). Professor adjunto do curso de Ciência da Computação na Universidade Federal da Fronteira Sul (UFFS), campus Chapecó, atuando principalmente nas áreas de Interação Humano-Computador (IHC), Visão Computacional e Computação Gráfica focados em jogos digitais.</p>
+                <p>{{ $user->bio }}</p>
                 <p class="text-muted pt-1"><small><i class="mdi mdi-information-outline"></i> Fonte: Currículo Lattes (obtido em 20/02/2020)</small></p>
               </div>
             </div>

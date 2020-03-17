@@ -15,4 +15,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/{key}', 'InfoController@show');
+Route::get('/pessoa/{key}', 'InfoController@show');
