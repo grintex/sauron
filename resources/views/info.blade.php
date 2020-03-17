@@ -87,7 +87,7 @@
               <div class="col-12 py-4">
                 <h2 class="mb-3"><i class="mdi mdi-account mdi-3x text-info"></i> Apresentação</h2>
                 <p>{{ $user->bio }}</p>
-                <p class="text-muted pt-1"><small><i class="mdi mdi-information-outline"></i> Fonte: Currículo Lattes (obtido em 20/02/2020)</small></p>
+                <p class="text-muted pt-1"><small><i class="mdi mdi-information-outline"></i> Fonte: Currículo Lattes (obtido em 17/03/2020)</small></p>
               </div>
             </div>
 
