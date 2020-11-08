@@ -30,6 +30,7 @@ var APP = new function() {
 
     this.renderChartFromElement = function(el) {
         var dataPath      = el.data('provider');
+        var labelsPath    = el.data('labels');
         var labelProp     = el.data('label-prop');
         var valueProp     = el.data('value-prop');
         var datasetsLabel = el.data('datasets-label');
@@ -37,6 +38,7 @@ var APP = new function() {
         var chartType     = el.data('chart-type') || 'bar';
         var elementId     = el.attr('id');
         var dataset       = this.dotsToObj(this.data, dataPath);
+        var labels        = this.dotsToObj(this.data, labelsPath);
 
         var extractedData = this.extracChartData(dataset, labelProp, valueProp);
 
@@ -49,6 +51,8 @@ var APP = new function() {
             this.renderBarChart(elementId, extractedData, props);
         } else if(chartType == 'line') {
             this.renderLineChart(elementId, extractedData, props);
+        } else if(chartType == 'stacked') {
+            this.renderStackedLineChart(elementId, extractedData, labels);
         }
     };
 
@@ -58,6 +62,10 @@ var APP = new function() {
         var colors = [];
         var min = undefined;
         var max = undefined;
+
+        if(!labelProperty || !valueProperty) {
+            return dataSource;
+        }
 
         for(var d in dataSource) {
             var info = dataSource[d];
@@ -202,6 +210,78 @@ var APP = new function() {
                             },*/
                             padding: 10
                         }
+					}]
+				}
+			}
+		};
+
+        var c = new Chart(e, config);
+    };
+
+    this.renderStackedLineChart = function(elementId, data, labels) {
+        var e = document.getElementById(elementId);
+        var i = 0;
+        var datasets = [];        
+        var colors = [
+            '#4BC0C0',
+            '#36A2EB',
+            '#FF6384',
+            '#FFCD56',
+            '#a0a0a0',
+        ];
+
+        for(var p in data) {
+            datasets.push({
+                label: p,
+                borderColor: colors[i],
+                backgroundColor: colors[i],
+                data: data[p].map(function(value) {
+                    if(p != "APROVADO") {
+                        return -value;
+                    }
+                    return value;
+                })
+            });
+            i++;
+        }
+
+        var config = {
+			type: 'line',
+			data: {
+				labels: labels,
+				datasets: datasets
+			},
+			options: {
+				responsive: true,
+				title: {
+					display: false,
+					text: 'Chart.js Line Chart'
+                },
+                legend: {
+                    display: false
+                },
+				tooltips: {
+					mode: 'index',
+					intersect: false,
+				},
+				hover: {
+					mode: 'nearest',
+					intersect: true
+				},
+				scales: {
+					xAxes: [{
+						display: true,
+						scaleLabel: {
+							display: true,
+							labelString: 'Período'
+						}
+					}],
+					yAxes: [{
+                        stacked: true,
+						scaleLabel: {
+							display: true,
+							labelString: 'Portentagem'
+                        },
 					}]
 				}
 			}
