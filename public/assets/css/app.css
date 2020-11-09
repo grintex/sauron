@@ -1,3 +1,7 @@
+body.embed {
+  margin: 20px;
+}
+
 .bg-inverse-primary {
   background: rgba(105, 111, 251, 0.2); }
 

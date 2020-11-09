@@ -17,3 +17,6 @@ Route::get('/', function () {
 
 Route::get('/pessoa/{key}', 'InfoController@show');
 Route::get('/disciplina/{key}', 'CourseController@show');
+
+// Embeds
+Route::get('/embed/disciplina-historico/{key}', 'EmbedCourseController@show');
