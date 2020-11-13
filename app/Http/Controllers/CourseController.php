@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
+use stdClass;
 
 class CourseController extends Controller
 {
@@ -96,6 +97,62 @@ class CourseController extends Controller
         return $data;
     }
 
+    protected function generateResponsiblesDatasets(array $history) {
+        $data = [];
+
+        foreach($history['list'] as $entry) {
+            foreach($entry->lista_docentes_ch as $info) {
+                $part = new stdClass();
+                $part->nome = $info->docente;
+                $part->ch = (int)$info->ch_docente;
+                $part->nome_curso = $entry->nome_curso;
+                $part->nome_ccr = $entry->nome_ccr;
+                $part->ano_ccr = (int)$entry->ano;
+                $part->semestre_ccr = (int)$entry->semestre;
+
+                $data[] = $part;
+            }
+        }
+
+        $data = array_reverse($data);
+
+        return $data;
+    }
+
+    protected function generateResponsiblesReport(array $responsibles_dataset) {
+        $data = [];
+
+        foreach($responsibles_dataset as $entry) {
+            if(!isset($data[$entry->nome])) {
+                $data[$entry->nome] = [];
+            }
+
+            $ch = $entry->ch;
+            $period = $entry->ano_ccr . '.' . $entry->semestre_ccr;
+
+            $data[$entry->nome][] = "$period (CH $ch)";
+        }
+
+        $report = [];
+
+        foreach($data as $name => $entries) {
+            $info = new stdClass();
+
+            $info->name = $name;
+            $info->count = count($entries);
+            $info->percentage = $info->count / count($responsibles_dataset);
+            $info->info = implode(', ', $entries);
+
+            $report[] = $info;
+        }
+
+        usort($report, function($a, $b) {
+            return $a->count < $b->count ? 1 : -1;
+        });
+
+        return $report;
+    }
+
     /**
      * Show the profile for the given user.
      *
@@ -106,6 +163,7 @@ class CourseController extends Controller
     {
         $course_history = $this->findCourseHistory($key);
         $course_datasets = $this->generateHistoryChartDatasets($course_history);
+        $course_responsibles = $this->generateResponsiblesDatasets($course_history);
 
         $info = $course_history['list'][0];
 
@@ -113,7 +171,8 @@ class CourseController extends Controller
             'course_name' => $info->nome_ccr,
             'course_code' => $key,
             'program' => $info->nome_curso,
-            'responsibles' => [],
+            'responsibles' => $course_responsibles,
+            'responsibles_report' => $this->generateResponsiblesReport($course_responsibles),
             'datasets' => $course_datasets,
             'labels' => array_keys($course_history['datasets']),
         ]);

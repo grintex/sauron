@@ -129,31 +129,55 @@
                         <div class="grid-body py-3">
                           <p class="card-title ml-n1"><i class="mdi mdi-library-books mr-2"></i> Componentes Curriculares Ministrados</p>
                         </div>
+                        <div class="container">
+                            <table class="table table-hover table-sm">
+                            <thead>
+                                <tr class="solid-header">
+                                    <th>Docente</th>
+                                    <th class="text-center">Vezes como ministrante</th>
+                                    <th class="text-center">Porcentagem como ministrante</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @forelse ($responsibles_report as $entry)
+                                    <tr>
+                                        <td>{{ $entry->name }}</td>
+                                        <td class="text-center">{{ $entry->count }}</td>
+                                        <td class="text-center">{{ sprintf('%.2f%%', $entry->percentage * 100) }}</td>
+                                    </tr>
+                                @empty
+                                    <p>Nenhuma informação disponível.</p>
+                                @endforelse
+                            </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12 equel-grid">
+                    <div class="grid">
+                        <div class="grid-body py-3">
+                          <p class="card-title ml-n1"><i class="mdi mdi-library-books mr-2"></i> Componentes Curriculares Ministrados</p>
+                        </div>
                         <div class="table-responsive">
                             <table class="table table-hover table-sm">
                             <thead>
                                 <tr class="solid-header">
-                                    <th>Nome</th>
+                                    <th>Período</th>
+                                    <th>Docente</th>
                                     <th>Curso</th>
-                                    <th>Situação</th>
                                     <th class="text-center">CH. CCR</th>
-                                    <th class="text-center">CH. Docente</th>
-                                    <th class="text-center">Período</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @forelse ($responsibles as $responsible)
                                     <tr>
-                                        <td>
-                                            <small class="text-black font-weight-medium d-block">{{ $responsible->nome_ccr }}</small>
-                                            <span class="text-gray">
-                                            <span class="status-indicator rounded-indicator small bg-primary"></span>{{ $responsible->desc_turma }}</span>
-                                        </td>
-                                        <td><small class="text-gray">{{ $responsible->curso_turma }}</small></td>
-                                        <td>{{ $responsible->sit_turma }}</td>
-                                        <td class="text-center">{{ $responsible->ch_ccr }}</td>
-                                        <td class="text-center">{{ $responsible->ch_docente }}</td>
-                                        <td class="text-center">{{ $responsible->ano }}.{{ $responsible->semestre }}</td>
+                                        <td>{{ $responsible->ano_ccr }}.{{ $responsible->semestre_ccr }}</td>
+                                        <td>{{ $responsible->nome }}</td>
+                                        <td>{{ $responsible->nome_curso }}</td>
+                                        <td class="text-center">{{ $responsible->ch }}</td>
                                     </tr>
                                 @empty
                                     <p>Nenhuma informação disponível.</p>
