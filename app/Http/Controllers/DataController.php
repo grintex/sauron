@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
+use stdClass;
 
 class DataController extends Controller
 {
@@ -39,36 +40,24 @@ class DataController extends Controller
     public function search(Request $request)
     {
         $term = $request->get('q', '');
+        $like = '%' . $term .'%';
 
-        $stats = DB::connection('sqlite')->select("
-        SELECT
-            sit_turma,
-            COUNT(sit_turma) qtd_sit_turma,
-            AVG(media_final) avg_media_final,
-            AVG(freq_turma) avg_freq_turma,
-            ano,
-            semestre,
-            cod_uffs,
-            cod_ccr,
-            nome_ccr,
-            nome_curso,
-            lista_docentes_ch,
-            data_atualizacao
-        FROM
-            'graduacao_historico/graduacao_historico' as h
-        WHERE
-            cod_ccr = ?
-        GROUP BY
-            ano, semestre, sit_turma
-        ", [$term]);
+        $courses = DB::table('graduacao_ccrs_matrizes/graduacao_ccrs_matrizes')
+                        ->whereRaw('nome_ccr LIKE ? or desc_matriz LIKE ?', [$like, $like])
+                        ->limit(15)
+                        ->get();
 
         $result = [];
 
-        foreach($stats as $stat) {
-            $result[] = $stat;
+        foreach($courses as $course) {
+            $item = new stdClass();
+            $item->url = url('/disciplina/' . $course->cod_ccr);
+            $item->name = $course->nome_ccr;
+            $item->complement = $course->nome_curso . ' ('. $course->nome_campus .')';
+            
+            $result[$course->cod_ccr] = $item;
         }
 
-
-        return $result;
+        return array_values($result);
     }
 }
