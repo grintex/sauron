@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'HomeController@index');
 
 Route::get('/pessoa/{key}', 'InfoController@show');
 Route::get('/disciplina/{key}', 'CourseController@show');
