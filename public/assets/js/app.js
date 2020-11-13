@@ -2,6 +2,10 @@
  * TODO
  */
 
+Chart.Legend.prototype.afterFit = function() {
+    this.height = this.height + 30;
+};
+
 var APP = new function() {
     this.data = APP_DATA;
 
@@ -38,7 +42,7 @@ var APP = new function() {
         var chartType     = el.data('chart-type') || 'bar';
         var elementId     = el.attr('id');
         var dataset       = this.dotsToObj(this.data, dataPath);
-        var labels        = this.dotsToObj(this.data, labelsPath);
+        var labels        = labelsPath ? this.dotsToObj(this.data, labelsPath) : [];
 
         var extractedData = this.extracChartData(dataset, labelProp, valueProp);
 
@@ -258,11 +262,25 @@ var APP = new function() {
 					text: 'Chart.js Line Chart'
                 },
                 legend: {
-                    display: false
+                    display: true,
+                    padding: 20
                 },
 				tooltips: {
 					mode: 'index',
-					intersect: false,
+                    intersect: false,
+                    callbacks: {
+                        label: function(tooltipItem, data) {
+                            var label = data.datasets[tooltipItem.datasetIndex].label || '';
+                            var value = tooltipItem.yLabel < 0 ? -tooltipItem.yLabel : tooltipItem.yLabel;
+
+                            if (label) {
+                                label += ': ';
+                            }
+
+                            label += Math.round(value * 100) / 100;
+                            return label + '%';
+                        }
+                    }
 				},
 				hover: {
 					mode: 'nearest',
@@ -282,7 +300,13 @@ var APP = new function() {
 							display: true,
 							labelString: 'Portentagem'
                         },
-					}]
+                        ticks: {
+                            // Include a dollar sign in the ticks
+                            callback: function(value, index, values) {
+                                return (value < 0 ? -value : value) + '%';
+                            }
+                        }
+					}],
 				}
 			}
 		};

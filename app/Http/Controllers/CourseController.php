@@ -119,34 +119,36 @@ class CourseController extends Controller
         return $data;
     }
 
-    protected function generateResponsiblesReport(array $responsibles_dataset) {
+    protected function generateResponsiblesReport(array $responsibles_dataset, $field = 'nome') {
         $data = [];
 
         foreach($responsibles_dataset as $entry) {
-            if(!isset($data[$entry->nome])) {
-                $data[$entry->nome] = [];
+            $key = $entry->$field;
+
+            if(!isset($data[$key])) {
+                $data[$key] = [];
             }
 
             $ch = $entry->ch;
             $period = $entry->ano_ccr . '.' . $entry->semestre_ccr;
 
-            $data[$entry->nome][] = "$period (CH $ch)";
+            $data[$key][] = "$period (CH $ch)";
         }
 
         $report = [];
 
-        foreach($data as $name => $entries) {
+        foreach($data as $key => $entries) {
             $info = new stdClass();
 
-            $info->name = $name;
+            $info->name = $key;
             $info->count = count($entries);
             $info->percentage = $info->count / count($responsibles_dataset);
             $info->info = implode(', ', $entries);
 
-            $report[] = $info;
+            $report[$key] = $info;
         }
 
-        usort($report, function($a, $b) {
+        uasort($report, function($a, $b) {
             return $a->count < $b->count ? 1 : -1;
         });
 
@@ -173,6 +175,7 @@ class CourseController extends Controller
             'program' => $info->nome_curso,
             'responsibles' => $course_responsibles,
             'responsibles_report' => $this->generateResponsiblesReport($course_responsibles),
+            'courses' => implode(', ', array_keys($this->generateResponsiblesReport($course_responsibles, 'nome_curso'))),
             'datasets' => $course_datasets,
             'labels' => array_keys($course_history['datasets']),
         ]);

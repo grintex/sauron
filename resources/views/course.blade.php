@@ -85,19 +85,8 @@
             <!-- Informações gerais -->
             <div class="row">
               <div class="col-12 py-4">
-                <h2 class="mb-3"><i class="mdi mdi-account mdi-3x text-info"></i> Apresentação</h2>
-                <p class="text-muted pt-1"><small><i class="mdi mdi-information-outline"></i> Fonte: Currículo Lattes (obtido em 17/03/2020)</small></p>
-              </div>
-            </div>
-
-            <!-------------------------------------------------------------------------------------------------
-                Ensino
-            -------------------------------------------------------------------------------------------------->
-            <div class="row">
-              <div class="col-12 pt-5">
-                <h3><i class="mdi mdi-school mdi-2x text-info"></i> Ensino</h3>
-                <p class="text-gray">Atividades de ensino relacionadas à graduação e pós-graduação.</p>
-                <hr />
+                <h2 class="mb-3"><i class="mdi mdi-school mdi-3x text-info"></i> {{ $course_code }} - {{ $course_name }}</h2>
+                <p>Esse componente curricular foi ministrado nos seguintes cursos: {{ $courses }}</p>
               </div>
             </div>
 
@@ -108,8 +97,8 @@
                     <div class="wrapper">
                       <div class="d-flex justify-content-between">
                         <div class="split-header py-2">
-                          <i class="mdi mdi-calendar-clock mdi-2x mr-2"></i>
-                          <p class="card-title">CCRs por ano</p>
+                          <i class="mdi mdi-history mdi-2x mr-2"></i>
+                          <p class="card-title">Histórico acadêmico</p>
                         </div>
                         <div class="wrapper">
                         </div>
@@ -127,7 +116,7 @@
                 <div class="col-md-12 equel-grid">
                     <div class="grid">
                         <div class="grid-body py-3">
-                          <p class="card-title ml-n1"><i class="mdi mdi-library-books mr-2"></i> Componentes Curriculares Ministrados</p>
+                          <p class="card-title ml-n1"><i class="mdi mdi-account-multiple mr-2"></i> Docentes ministrantes</p>
                         </div>
                         <div class="container">
                             <table class="table table-hover table-sm">
@@ -159,7 +148,7 @@
                 <div class="col-md-12 equel-grid">
                     <div class="grid">
                         <div class="grid-body py-3">
-                          <p class="card-title ml-n1"><i class="mdi mdi-library-books mr-2"></i> Componentes Curriculares Ministrados</p>
+                          <p class="card-title ml-n1"><i class="mdi mdi-account-group mr-2"></i> Lista completa de docentes ministrantes</p>
                         </div>
                         <div class="table-responsive">
                             <table class="table table-hover table-sm">
