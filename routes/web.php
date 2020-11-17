@@ -11,10 +11,10 @@
 |
 */
 
-Route::get('/', 'HomeController@index');
+Route::get('/', 'App\Http\Controllers\HomeController@index');
 
-Route::get('/pessoa/{key}', 'InfoController@show');
-Route::get('/disciplina/{key}', 'CourseController@show');
+Route::get('/pessoa/{key}', 'App\Http\Controllers\InfoController@show');
+Route::get('/disciplina/{key}', 'App\Http\Controllers\CourseController@show');
 
 // Embeds
-Route::get('/embed/disciplina-historico/{key}', 'EmbedCourseController@show');
+Route::get('/embed/disciplina-historico/{key}', 'App\Http\Controllers\EmbedCourseController@show');
