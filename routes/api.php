@@ -13,8 +13,8 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::get('/dados', 'DataController@index')->name('api.index');
-Route::match(array('GET','POST'), '/pesquisa', 'DataController@search')->name('api.search');
+Route::get('/dados', 'App\Http\Controllers\DataController@index')->name('api.index');
+Route::match(array('GET','POST'), '/pesquisa', 'App\Http\Controllers\DataController@search')->name('api.search');
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
