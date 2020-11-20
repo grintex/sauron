@@ -42,7 +42,7 @@ class DataController extends Controller
         $term = $request->get('q', '');
         $like = '%' . $term .'%';
 
-        $courses = DB::table('graduacao_ccrs_matrizes/graduacao_ccrs_matrizes')
+        $courses = DB::connection('dados-uffs')->table('graduacao_ccrs_matrizes/graduacao_ccrs_matrizes')
                         ->whereRaw('nome_ccr LIKE ? OR cod_ccr LIKE ? OR desc_matriz LIKE ?', [$like, $like, $like])
                         ->limit(15)
                         ->get();
@@ -56,6 +56,22 @@ class DataController extends Controller
             $item->complement = $course->nome_curso . ' ('. $course->nome_campus .')';
             
             $result[$course->cod_ccr] = $item;
+        }
+
+        $name_like = '%' . $term .'%';
+
+        $personnel = DB::connection('uffs-personnel')->table('personnel')
+                        ->whereRaw('name LIKE ? AND department_name LIKE ?', [$name_like, 'Docente%'])
+                        ->limit(15)
+                        ->get();
+
+        foreach($personnel as $person) {
+            $item = new stdClass();
+            $item->url = url('/pessoa/' . $person->uid);
+            $item->name = $person->name;
+            $item->complement = !empty($person->department_name) ? $person->department_name . ' ('.$person->department_address.')' : $person->notes;
+            
+            $result[$person->uid] = $item;
         }
 
         return array_values($result);
