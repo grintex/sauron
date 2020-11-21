@@ -18,8 +18,6 @@
     <link rel="stylesheet" href="{{ asset('assets/css/froala_blocks.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/froala_style.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
-
-    @livewireStyles
 </head>
 
 <body>
@@ -271,7 +269,6 @@
     <script src="{{ asset('assets/js/bootstrap/bootstrap-autocomplete.min.js') }}"></script>
     <script src="{{ asset('assets/js/home.js') }}"></script>
     <script src="https://use.fontawesome.com/releases/v5.5.0/js/all.js"></script>
-    @livewireScripts
 </body>
 
 </html>
