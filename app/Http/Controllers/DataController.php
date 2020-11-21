@@ -67,7 +67,7 @@ class DataController extends Controller
 
         foreach($personnel as $person) {
             $item = new stdClass();
-            $item->url = url('/pessoa/' . $person->uid);
+            $item->url = url('/pessoa/' . str_replace(' ', '-', $person->name));
             $item->name = $person->name;
             $item->complement = !empty($person->department_name) ? $person->department_name . ' ('.$person->department_address.')' : $person->notes;
             

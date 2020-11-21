@@ -110,14 +110,13 @@ class InfoController extends Controller
         return array();
     }
 
-    private function getUserFromKey($key) {
+    private function getUserFromName($name) {
         $user = DB::connection('uffs-personnel')->table('personnel')
-                            ->where('uid', $key)
+                            ->where('name', $name)
                             ->first();
 
         if($user != null) {
             $user->bio = '';
-            $user->key = $key;
             $user->complement = !empty($user->department_name) ? $user->department_name . ' '.$user->department_address : $user->notes;
         }
 
@@ -132,7 +131,8 @@ class InfoController extends Controller
      */
     public function show($key)
     {
-        $user = $this->getUserFromKey($key);
+        $name = str_replace('-', ' ', $key);
+        $user = $this->getUserFromName($name);
 
         if(!$user) {
             // TODO: propely check this
