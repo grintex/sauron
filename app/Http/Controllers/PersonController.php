@@ -105,6 +105,15 @@ class PersonController extends Controller
         return $projects;
     }
 
+    private function findExtensionProjects($user) {
+        $projects = DB::connection('dados-uffs')->table('projetos_extensao/projetos_extensao')
+                            ->where('coordenador', 'like', '%' . $user->name . '%')
+                            ->orderBy('ano', 'desc')
+                            ->get();
+
+        return $projects;
+    }
+
     private function getLattesInfo($user) {
         // TODO: implement this
         return array();
@@ -152,7 +161,7 @@ class PersonController extends Controller
             'bio' => $user->complement,
             'place' => $user->department_address,
             'research_projects' => $researchProjects,
-            'extension_projects' => [],
+            'extension_projects' => $this->findExtensionProjects($user),
             'courses' => $courses,
             'research_stats' => $researchStats,
             'academic_stats' => $academicStats
