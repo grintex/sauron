@@ -152,6 +152,7 @@ class PersonController extends Controller
             'bio' => $user->complement,
             'place' => $user->department_address,
             'research_projects' => $researchProjects,
+            'extension_projects' => [],
             'courses' => $courses,
             'research_stats' => $researchStats,
             'academic_stats' => $academicStats

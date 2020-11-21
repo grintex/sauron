@@ -61,7 +61,7 @@ class DataController extends Controller
         $name_like = '%' . $term .'%';
 
         $personnel = DB::connection('uffs-personnel')->table('personnel')
-                        ->whereRaw('name LIKE ? AND department_name LIKE ?', [$name_like, 'Docente%'])
+                        ->whereRaw('name LIKE ? AND (notes LIKE ? OR notes LIKE ? OR department_name LIKE ?)', [$name_like, '%Prof%', '%Docente%', '%Docente%'])
                         ->limit(15)
                         ->get();
 

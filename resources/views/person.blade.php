@@ -18,7 +18,7 @@
       <div class="sidebar">
         <div class="user-profile">
           <div class="display-avatar animated-avatar">
-            <img class="profile-img img-lg rounded-circle" src="{{ asset('assets/images/profile/male/image_1.png') }}" alt="profile image">
+            <img class="profile-img img-lg rounded-circle" src="{{ asset('assets/images/profile/default.jpg') }}" alt="profile image">
           </div>
           <div class="info-wrapper">
             <p class="user-name">{{ $user->name }}</p>
@@ -52,6 +52,15 @@
             <ul class="collapse navigation-submenu" id="menu-pesquisa">
               <li><a href="#pesquisa-projetos">Projetos</a></li>
               <li><a href="#pesquisa-producao-cientifica">Produção científica</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="#menu-extensao" data-toggle="collapse" aria-expanded="false">
+              <span class="link-title">Extensão</span>
+              <i class="mdi mdi-library link-icon"></i>
+            </a>
+            <ul class="collapse navigation-submenu" id="menu-extensao">
+              <li><a href="#extensao-projetos">Projetos</a></li>
             </ul>
           </li>
           <li>
@@ -176,7 +185,7 @@
                         <div class="grid-body py-3">
                           <p class="card-title ml-n1"><i class="mdi mdi-library-books mr-2"></i> Componentes Curriculares Ministrados</p>
                         </div>
-                        <div class="table-responsive">
+                        <div class="container">
                             <table class="table table-hover table-sm">
                             <thead>
                                 <tr class="solid-header">
@@ -194,7 +203,9 @@
                                         <td>
                                             <small class="text-black font-weight-medium d-block">{{ $course->nome_ccr }}</small>
                                             <span class="text-gray">
-                                            <span class="status-indicator rounded-indicator small bg-primary"></span>{{ $course->desc_turma }}</span>
+                                              <span class="status-indicator rounded-indicator small bg-primary"></span>
+                                              {{ $course->desc_turma }}
+                                            </span>
                                         </td>
                                         <td><small class="text-gray">{{ $course->curso_turma }}</small></td>
                                         <td>{{ $course->sit_turma }}</td>
@@ -215,7 +226,7 @@
             <!-------------------------------------------------------------------------------------------------
                 Pesquisa
             -------------------------------------------------------------------------------------------------->
-            <div class="row">
+            <div class="row mt-5">
               <div class="col-12 py-3">
                 <h3><i class="mdi mdi-atom mdi-3x text-info"></i> Pesquisa</h3>
                 <p class="text-gray">Atividades de pesquisa como projetos e publicações científicas.</p>
@@ -284,7 +295,7 @@
 
             <div class="row">
               <div class="col-12"> 
-                  <p class="text-gray"><i class="mdi mdi-alert-box-outline mdi-2x"></i> No momento, informações sobre publicações científicas não estão disponíveis.</p>
+                  <p class="text-danger"><i class="mdi mdi-alert-box-outline mdi-2x"></i> No momento, informações sobre publicações científicas não estão disponíveis.</p>
               </div>
             </div>  
 
@@ -347,11 +358,73 @@
             </div>
 
             <!-------------------------------------------------------------------------------------------------
+                Extensão
+            -------------------------------------------------------------------------------------------------->
+            <a name="extensao-projetos"></a>
+            <div class="row mt-5">
+              <div class="col-12 py-3">
+                <h3><i class="mdi mdi-library mdi-3x text-info"></i> Extensão</h3>
+                <p class="text-gray">Atividades vinculadas à extensão.</p>
+                <hr />
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-12 py-1 mb-3">
+                <h4><i class="mdi mdi-library-shelves mdi-2x text-info"></i> Projetos</h4>
+                <p class="text-gray">Projetos de extensão institucionalizados.</p>
+              </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12 equel-grid">
+                    @if (count($extension_projects) === 0)
+                      <p><i class="mdi mdi-alert-circle-outline text-danger"></i> Esse docente não está vinculado a projetos de extensão conhecidos pela instituição.</p>
+                    @else
+                      <div class="grid">
+                          <div class="table-responsive">
+                              <table class="table table-hover table-lg">
+                              <thead>
+                                  <tr class="solid-header">
+                                      <th style="width: 5%;">Data</th>
+                                      <th style="width: 15%;">Registro</th>
+                                      <th style="width: 65%;">Título</th>
+                                      <th style="width: 5%;">Campus</th>
+                                  </tr>
+                              </thead>
+                              <tbody>
+                                  @foreach ($extension_projects as $project)
+                                      <tr>
+                                          <td>{{ $project->projeto_registro }}</td> 
+                                          <td class="word-wrap">
+                                              <small class="text-black font-weight-medium d-block">{{ $project->projeto_registro }}</small>
+                                              <span class="text-gray">
+                                                  {{ $project->modalidade }}
+                                              </span>
+                                          </td>
+                                          <td class="word-wrap">
+                                              <small class="text-black font-weight-medium d-block">{{ $project->projeto_titulo }}</small>
+                                              <span class="text-gray">
+                                                  <span class="status-indicator rounded-indicator small bg-primary"></span> {{ $project->desc_area_cnpq }}
+                                              </span>
+                                          </td> 
+                                          <td>{{ $project->nome_campus }}</td> 
+                                      </tr>
+                                  @endforeach
+                              </tbody>
+                              </table>
+                          </div>
+                      </div>
+                    @endif
+                </div>
+            </div>
+
+            <!-------------------------------------------------------------------------------------------------
                 Administrativo
             -------------------------------------------------------------------------------------------------->
-            <a name="pesquisa-administrativo"></a>
-            <div class="row">
-              <div class="col-12 py-2 mt-5">
+            <a name="administrativo"></a>
+            <div class="row mt-5">
+              <div class="col-12 py-2">
                 <h3><i class="mdi mdi-office-building mdi-2x text-info"></i>Administrativo</h3>
                 <p class="text-gray">Atividades ligadas majoritariamente à administração e gerência das atividades públicas, como coordenação de curso, direção, membro de comissão/colegiado/etc.</p>
                 <hr />
@@ -359,7 +432,7 @@
             </div>
             <div class="row">
               <div class="col-12"> 
-                  <p class="text-gray"><i class="mdi mdi-alert-box-outline mdi-2x"></i> No momento, informações administrativas não estão disponíveis.</p>
+                  <p class="text-danger"><i class="mdi mdi-alert-box-outline mdi-2x"></i> No momento, informações administrativas não estão disponíveis.</p>
               </div>
             </div>  
         </div>

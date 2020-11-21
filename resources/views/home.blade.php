@@ -36,13 +36,13 @@
                 <div class="collapse navbar-collapse justify-content-center col-md-7" id="navbarNav4">
                     <ul class="navbar-nav justify-content-center">
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Sobre</a>
+                            <a class="nav-link" href="#sobre">Sobre</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Grintex</a>
+                            <a class="nav-link" href="#porque">Porque</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Contato</a>
+                            <a class="nav-link" href="#quem">Quem</a>
                         </li>
                     </ul>
                 </div>
@@ -104,20 +104,8 @@
             </div>
         </div>
     </section>
-    <!--
-    <section class="fdb-block" data-block-type="contents" data-id="4" >
-        <div class="container">
-            <div class="row">
-                <div class="col text-left">
-                    <h2>O que é esse serviço?</h2>
-                    <p>Esse site é uma ferramenta para a visualização dos dados contidos no <a href="https://dados.uffs.edu.br" target="_blank">Portal de Dados Abertos</a> da <a href="https://www.uffs.edu.br">Universidade Federal da Fronteira Sul (UFFS)</a>, que promove a abertura de dados públicos institucionais. Ele está embasado no Plano de Dados Abertos da UFFS de Janeiro de 2017 e segue determinação do <a href="http://www.planalto.gov.br/ccivil_03/_Ato2015-2018/2016/Decreto/D8777.htm" target="_blank">Decreto no 8.777, de 11 de maio de 2016. Além disso, ele agrega informações públicas da UFFS, como editais e portarias.</p>
-                    <p>O serviço permite que qualquer entidade, seja cidadão ou órgão público, consulte os dados referentes à UFFS. Mais do que apenas listar informações, esse site contextualiza dados de diferentes fontes. Por exemplo, você pode pesquisar pelo nome de uma disciplina e saber seu historico de reprovações. Ou você pode conhecer sobre as ações de pesquisa de um terminado docente.</p>
-                    <p>Na mesma luz de transparência desse serviço, todo o código fonte desse site é <a href="https://github.com/grintex/sauron">open-source e publicamente disponível</a>. Ele foi desenvolvido como parte do <a href="https://github.com/grintex">Grupo de Inovação Tecnológica Experimental (Grintex)</a>, um projeto de extensão (EXT-2020-0005) coordenado pelo professor Fernando Bevilacqua do curso de Ciência da Computação da UFFS campus Chapecó.</p>
-                </div>
-            </div>
-        </div>
-    </section>
--->
+
+    <a name="sobre"></a>
     <section class="fdb-block">
         <div class="container">
           <div class="row align-items-center">
@@ -134,6 +122,7 @@
         </div>
     </section>
 
+    <a name="porque"></a>
     <section class="fdb-block">
         <div class="container">
           <div class="row align-items-center">
@@ -150,6 +139,7 @@
         </div>
     </section>
 
+    <a name="quem"></a>
     <section class="fdb-block">
         <div class="container">
           <div class="row align-items-center">
@@ -158,7 +148,7 @@
               <p class="lead">Esse site é resultado de um projeto de extensão e inovação tecnológica da própria UFFS.</p>
               <p>O serviço foi desenvolvido como parte do <a href="https://github.com/grintex">Grupo de Inovação Tecnológica Experimental (Grintex)</a>, um projeto de extensão coordenado pelo professor <a href="https://fernandobevilacqua.com">Fernando Bevilacqua</a> do curso de <a href="https://cc.uffs.edu.br">Ciência da Computação</a> da UFFS campus Chapecó. Na mesma luz de transparência desse serviço, todo o código fonte desse site é <a href="https://github.com/grintex/sauron">open-source e publicamente disponível</a>.</p>
               <p class="mt-4">
-                <a class="btn btn-dark" href="#"><i class="fab fa-github"></i> Github</a>
+                <a class="btn btn-dark" href="http://github.com/grintex/sauron"><i class="fab fa-github"></i> Github</a>
                 <a class="btn btn-primary ml-2" href="https://github.com/grintex/sauron/issues/new"><i class="far fa-lightbulb"></i> Envie sua ideia</a>                
               </p>
             </div>
