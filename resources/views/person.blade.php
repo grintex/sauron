@@ -12,15 +12,6 @@
     <link rel="shortcut icon" href="../asssets/images/favicon.ico" />
   </head>
   <body class="header-fixed">
-    <!-- partial:partials/_header.html -->
-    <nav class="t-header">
-      <div class="t-header-brand-wrapper">
-        <a href="index.html">
-          <img class="logo" src="{{ asset('assets/images/logo1.svg') }}" alt="">
-          <img class="logo-mini" src="{{ asset('assets/images/logo_mini1.svg') }}" alt="">
-        </a>
-      </div>
-    </nav>
     <!-- partial -->
     <div class="page-body">
       <!-- partial:partials/_sidebar.html -->
@@ -31,7 +22,7 @@
           </div>
           <div class="info-wrapper">
             <p class="user-name">{{ $user->name }}</p>
-            <p class="text-muted">Ciência da Computação<br />Chapecó, SC</p>
+            <p class="text-muted">{{ $job }}<br />{{ $place }}</p>
           </div>
         </div>
         <ul class="navigation-menu">
@@ -91,11 +82,12 @@
             </div>
 
             <!-- Informações gerais -->
+            <a name="apresentacao"></a>
             <div class="row">
               <div class="col-12 py-4">
                 <h2 class="mb-3"><i class="mdi mdi-account mdi-3x text-info"></i> Apresentação</h2>
-                <p>{{ $user->bio }}</p>
-                <p class="text-muted pt-1"><small><i class="mdi mdi-information-outline"></i> Fonte: Currículo Lattes (obtido em 17/03/2020)</small></p>
+                <p>{{ $bio }}</p>
+                <!--<p class="text-muted pt-1"><small><i class="mdi mdi-information-outline"></i> Fonte: Currículo Lattes (obtido em 17/03/2020)</small></p>-->
               </div>
             </div>
 
@@ -110,6 +102,7 @@
               </div>
             </div>
 
+            <a name="ensino-docencia"></a>
             <div class="row">
               <div class="col-12 py-4">
                 <h4><i class="mdi mdi-teach text-info"></i> Docência</h4>
@@ -230,6 +223,7 @@
               </div>
             </div>
 
+            <a name="pesquisa-projetos"></a>
             <div class="row">
               <div class="col-12 py-1 mb-3">
                 <h4><i class="mdi mdi-flask-empty-outline mdi-2x text-info"></i> Projetos</h4>
@@ -280,6 +274,7 @@
                 </div>
             </div>
 
+            <a name="pesquisa-producao-cientifica"></a>
             <div class="row">
               <div class="col-12 py-2 mt-4">
                 <h4><i class="mdi mdi-book-outline mdi-2x text-info"></i> Produção científica</h4>
@@ -354,6 +349,7 @@
             <!-------------------------------------------------------------------------------------------------
                 Administrativo
             -------------------------------------------------------------------------------------------------->
+            <a name="pesquisa-administrativo"></a>
             <div class="row">
               <div class="col-12 py-2 mt-5">
                 <h3><i class="mdi mdi-office-building mdi-2x text-info"></i>Administrativo</h3>

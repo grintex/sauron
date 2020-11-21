@@ -6,7 +6,7 @@ use App\Models\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 
-class InfoController extends Controller
+class PersonController extends Controller
 {
     private function findCourses($user) {
         $courses = DB::connection('dados-uffs')->table('graduacao_turmas/graduacao_turmas')
@@ -146,8 +146,11 @@ class InfoController extends Controller
         $academicStats = $this->deriveAcademicStats($courses);
         $researchStats = $this->deriveResearchStats($researchProjects, $lattesInfo);
         
-        return view('info', [
+        return view('person', [
             'user' => $user,
+            'job' => str_replace('Docentes:', '', $user->department_name),
+            'bio' => $user->complement,
+            'place' => $user->department_address,
             'research_projects' => $researchProjects,
             'courses' => $courses,
             'research_stats' => $researchStats,

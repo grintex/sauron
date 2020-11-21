@@ -12,15 +12,6 @@
     <link rel="shortcut icon" href="../asssets/images/favicon.ico" />
   </head>
   <body class="header-fixed">
-    <!-- partial:partials/_header.html -->
-    <nav class="t-header">
-      <div class="t-header-brand-wrapper">
-        <a href="index.html">
-          <img class="logo" src="{{ asset('assets/images/logo1.svg') }}" alt="">
-          <img class="logo-mini" src="{{ asset('assets/images/logo_mini1.svg') }}" alt="">
-        </a>
-      </div>
-    </nav>
     <!-- partial -->
     <div class="page-body">
       <!-- partial:partials/_sidebar.html -->
@@ -28,19 +19,19 @@
         <ul class="navigation-menu">
           <li class="nav-category-divider">INFORMAÇÕES</li>
           <li>
-            <a href="#apresentacao">
+            <a href="#historico-academico">
               <span class="link-title">Histórico Acadêmico</span>
               <i class="mdi mdi-history link-icon"></i>
             </a>
           </li>
           <li>
-            <a href="#apresentacao">
+            <a href="#docentes-ministrantes">
               <span class="link-title">Docentes ministrantes</span>
               <i class="mdi mdi-account-multiple link-icon"></i>
             </a>
           </li>
           <li>
-            <a href="#apresentacao">
+            <a href="#historico-docente">
               <span class="link-title">Histórico docente</span>
               <i class="mdi mdi-account-group link-icon"></i>
             </a>
@@ -66,6 +57,7 @@
               </div>
             </div>
 
+            <a name="historico-academico"></a>
             <div class="row">
               <div class="col-lg-12 col-md-12 equel-grid">
                 <div class="grid">
@@ -88,6 +80,7 @@
               </div>
             </div>
 
+            <a name="docentes-ministrantes"></a>
             <div class="row">
                 <div class="col-md-12 equel-grid">
                     <div class="grid">
@@ -120,6 +113,7 @@
                 </div>
             </div>
 
+            <a name="historico-docente"></a>
             <div class="row">
                 <div class="col-md-12 equel-grid">
                     <div class="grid">

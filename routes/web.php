@@ -13,7 +13,7 @@
 
 Route::get('/', 'App\Http\Controllers\HomeController@index');
 
-Route::get('/pessoa/{key}', 'App\Http\Controllers\InfoController@show');
+Route::get('/pessoa/{key}', 'App\Http\Controllers\PersonController@show');
 Route::get('/disciplina/{key}', 'App\Http\Controllers\CourseController@show');
 
 // Embeds
