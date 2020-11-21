@@ -79,9 +79,17 @@
         </ul>
       </div>
       <!-- partial -->
+
       <div class="page-content-wrapper">
         <div class="page-content-wrapper-inner">
           <div class="content-viewport">
+            <!-- Navigation -->
+            <div class="row pt-6">
+              <div class="col-12 py-5">
+                <a href="{{ url('/') }}"><i class="mdi mdi-keyboard-backspace"></i> Voltar</a>
+              </div>
+            </div>
+
             <!-- Informações gerais -->
             <div class="row">
               <div class="col-12 py-4">
@@ -368,7 +376,6 @@
                 <li><a href="https://www.uffs.edu.br/">UFFS</a></li>
                 <li><a href="https://dados.uffs.edu.br/">Dados Abertos UFFS</a></li>
                 <li><a href="http://www.portaltransparencia.gov.br">Portal da Transparência</a></li>
-                
               </ul>
             </div>
             <div class="col-sm-5 text-center text-sm-left mt-3 mt-sm-0">

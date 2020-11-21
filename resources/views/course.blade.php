@@ -25,55 +25,24 @@
     <div class="page-body">
       <!-- partial:partials/_sidebar.html -->
       <div class="sidebar">
-        <div class="user-profile">
-          <div class="display-avatar animated-avatar">
-            <img class="profile-img img-lg rounded-circle" src="{{ asset('assets/images/profile/male/image_1.png') }}" alt="profile image">
-          </div>
-          <div class="info-wrapper">
-            <p class="user-name">{{ $course_name }}</p>
-            <p class="text-muted">Ciência da Computação<br />Chapecó, SC</p>
-          </div>
-        </div>
         <ul class="navigation-menu">
           <li class="nav-category-divider">INFORMAÇÕES</li>
           <li>
             <a href="#apresentacao">
-              <span class="link-title">Apresentação</span>
-              <i class="mdi mdi-account link-icon"></i>
+              <span class="link-title">Histórico Acadêmico</span>
+              <i class="mdi mdi-history link-icon"></i>
             </a>
           </li>
           <li>
-            <a href="#menu-ensino" data-toggle="collapse" aria-expanded="false">
-              <span class="link-title">Ensino</span>
-              <i class="mdi mdi-school link-icon"></i>
-            </a>
-            <ul class="collapse navigation-submenu" id="menu-ensino">
-              <li>
-                <a href="#ensino-docencia">Docência</a>
-              </li>
-            </ul>
-          </li>
-          <li>
-            <a href="#menu-pesquisa" data-toggle="collapse" aria-expanded="false">
-              <span class="link-title">Pesquisa</span>
-              <i class="mdi mdi-atom link-icon"></i>
-            </a>
-            <ul class="collapse navigation-submenu" id="menu-pesquisa">
-              <li><a href="#pesquisa-projetos">Projetos</a></li>
-              <li><a href="#pesquisa-producao-cientifica">Produção científica</a></li>
-            </ul>
-          </li>
-          <li>
-            <a href="#administrativo">
-              <span class="link-title">Administrativo</span>
-              <i class="mdi mdi-office-building link-icon"></i>
+            <a href="#apresentacao">
+              <span class="link-title">Docentes ministrantes</span>
+              <i class="mdi mdi-account-multiple link-icon"></i>
             </a>
           </li>
-          <li class="nav-category-divider">DOCS</li>
           <li>
-            <a href="../docs/docs.html">
-              <span class="link-title">Documentation</span>
-              <i class="mdi mdi-asterisk link-icon"></i>
+            <a href="#apresentacao">
+              <span class="link-title">Histórico docente</span>
+              <i class="mdi mdi-account-group link-icon"></i>
             </a>
           </li>
         </ul>
@@ -82,6 +51,13 @@
       <div class="page-content-wrapper">
         <div class="page-content-wrapper-inner">
           <div class="content-viewport">
+            <!-- Navigation -->
+            <div class="row pt-6">
+              <div class="col-12 py-5">
+                <a href="{{ url('/') }}"><i class="mdi mdi-keyboard-backspace"></i> Voltar</a>
+              </div>
+            </div>
+            
             <!-- Informações gerais -->
             <div class="row">
               <div class="col-12 py-4">
@@ -150,7 +126,7 @@
                         <div class="grid-body py-3">
                           <p class="card-title ml-n1"><i class="mdi mdi-account-group mr-2"></i> Lista completa de docentes ministrantes</p>
                         </div>
-                        <div class="table-responsive">
+                        <div class="container">
                             <table class="table table-hover table-sm">
                             <thead>
                                 <tr class="solid-header">
@@ -165,7 +141,7 @@
                                     <tr>
                                         <td>{{ $responsible->ano_ccr }}.{{ $responsible->semestre_ccr }}</td>
                                         <td>{{ $responsible->nome }}</td>
-                                        <td>{{ $responsible->nome_curso }}</td>
+                                        <td class="force-word-wrap">{{ $responsible->nome_curso }}</td>
                                         <td class="text-center">{{ $responsible->ch }}</td>
                                     </tr>
                                 @empty
