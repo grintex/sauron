@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
+use App\Utils\Sanitizer;
 use stdClass;
 
 class DataController extends Controller
@@ -40,10 +41,10 @@ class DataController extends Controller
     public function search(Request $request)
     {
         $term = $request->get('q', '');
-        $like = '%' . $term .'%';
+        $like = '%' . Sanitizer::clean($term) .'%';
 
-        $courses = DB::connection('dados-uffs')->table('graduacao_ccrs_matrizes/graduacao_ccrs_matrizes')
-                        ->whereRaw('nome_ccr LIKE ? OR cod_ccr LIKE ? OR desc_matriz LIKE ?', [$like, $like, $like])
+        $courses = DB::connection('dados-uffs')->table('idx_graduacao_historico')
+                        ->whereRaw('indexed_content LIKE ?', [$like])
                         ->limit(15)
                         ->get();
 
