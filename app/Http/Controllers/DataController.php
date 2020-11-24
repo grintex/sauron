@@ -61,14 +61,16 @@ class DataController extends Controller
         $name_like = '%' . $term .'%';
 
         $personnel = DB::connection('uffs-personnel')->table('personnel')
-                        ->whereRaw('name LIKE ? AND (notes LIKE ? OR notes LIKE ? OR department_name LIKE ?)', [$name_like, '%Prof%', '%Docente%', '%Docente%'])
-                        ->limit(15)
+                        ->whereRaw('name LIKE ? AND (notes LIKE ? OR notes LIKE ? OR notes LIKE ? OR department_name LIKE ?)', [$name_like, '%Prof%', '%Magisterio%', '%Docente%', '%Docente%'])
+                        ->limit(10)
                         ->get();
 
         foreach($personnel as $person) {
+            $name = trim($person->name);
+            $name_slug = str_replace(' ', '-', $name);
             $item = new stdClass();
-            $item->url = url('/pessoa/' . str_replace(' ', '-', $person->name));
-            $item->name = $person->name;
+            $item->url = url('/pessoa/' . $name_slug);
+            $item->name = $name;
             $item->complement = !empty($person->department_name) ? $person->department_name . ' ('.$person->department_address.')' : $person->notes;
             
             $result[$person->uid] = $item;

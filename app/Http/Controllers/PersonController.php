@@ -8,9 +8,9 @@ use Illuminate\Support\Facades\DB;
 
 class PersonController extends Controller
 {
-    private function findCourses($user) {
+    private function findCourses($user_name) {
         $courses = DB::connection('dados-uffs')->table('graduacao_turmas/graduacao_turmas')
-                            ->where('lista_docentes_ch', 'like', '%' . $user->name . '%')
+                            ->where('lista_docentes_ch', 'like', '%' . $user_name . '%')
                             ->distinct('id_turma')
                             ->orderBy('ano', 'desc')
                             ->get();
@@ -23,7 +23,7 @@ class PersonController extends Controller
             }
 
             foreach($entries as $entry) {
-                if(strtolower($entry->docente) == strtolower($user->name)) {
+                if(strtolower($entry->docente) == strtolower($user_name)) {
                     $course->ch_docente = $entry->ch_docente;
                 }
             }
@@ -32,9 +32,9 @@ class PersonController extends Controller
         return $courses;
     }
 
-    private function findDocMentions($user) {
+    private function findDocMentions($user_name) {
         $person = DB::connection('dados-uffs-idx')->table('professores')
-                            ->whereRaw('nome LIKE ?', [$user->name])
+                            ->whereRaw('nome LIKE ?', [$user_name])
                             ->orderBy('ano', 'desc')
                             ->first();
 
@@ -125,32 +125,32 @@ class PersonController extends Controller
         return array();
     }
 
-    private function findResearchProjects($user) {
+    private function findResearchProjects($user_name) {
         $projects = DB::connection('dados-uffs')->table('projetos_pesquisa/projetos_pesquisa')
-                            ->where('coordenador', 'like', '%' . $user->name . '%')
+                            ->where('coordenador', 'like', '%' . $user_name . '%')
                             ->orderBy('ano', 'desc')
                             ->get();
 
         return $projects;
     }
 
-    private function findExtensionProjects($user) {
+    private function findExtensionProjects($user_name) {
         $projects = DB::connection('dados-uffs')->table('projetos_extensao/projetos_extensao')
-                            ->where('coordenador', 'like', '%' . $user->name . '%')
+                            ->where('coordenador', 'like', '%' . $user_name . '%')
                             ->orderBy('ano', 'desc')
                             ->get();
 
         return $projects;
     }
 
-    private function getLattesInfo($user) {
+    private function getLattesInfo($user_name) {
         // TODO: implement this
         return array();
     }
 
     private function getUserFromName($name) {
         $user = DB::connection('uffs-personnel')->table('personnel')
-                            ->where('name', $name)
+                            ->whereRaw('trim(name) = ?', $name)
                             ->first();
 
         if($user != null) {
@@ -169,7 +169,7 @@ class PersonController extends Controller
      */
     public function show($key)
     {
-        $name = str_replace('-', ' ', $key);
+        $name = trim(str_replace('-', ' ', $key));
         $user = $this->getUserFromName($name);
 
         if(!$user) {
@@ -177,10 +177,10 @@ class PersonController extends Controller
             return view('notfound');
         }
 
-        $courses = $this->findCourses($user);
-        $research_projects = $this->findResearchProjects($user);
-        $lattes_info = $this->getLattesInfo($user);
-        $doc_mentions = $this->findDocMentions($user);
+        $courses = $this->findCourses($name);
+        $research_projects = $this->findResearchProjects($name);
+        $lattes_info = $this->getLattesInfo($name);
+        $doc_mentions = $this->findDocMentions($name);
 
         $academic_stats = $this->deriveAcademicStats($courses);
         $research_stats = $this->deriveResearchStats($research_projects, $lattes_info);
@@ -191,7 +191,7 @@ class PersonController extends Controller
             'bio' => $user->complement,
             'place' => $user->department_address,
             'research_projects' => $research_projects,
-            'extension_projects' => $this->findExtensionProjects($user),
+            'extension_projects' => $this->findExtensionProjects($name),
             'courses' => $courses,
             'doc_mentions' => $doc_mentions,
             'research_stats' => $research_stats,

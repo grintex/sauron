@@ -189,21 +189,22 @@
                             <table class="table table-hover table-sm">
                             <thead>
                                 <tr class="solid-header">
+                                    <th class="text-center">Período</th>
                                     <th>Nome</th>
                                     <th>Curso</th>
                                     <th>Situação</th>
                                     <th class="text-center">CH. CCR</th>
                                     <th class="text-center">CH. Docente</th>
-                                    <th class="text-center">Período</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @forelse ($courses as $course)
+                                @forelse ($c ourses as $course)
                                     <tr>
+                                        <td class="text-center">{{ $course->ano }}.{{ $course->semestre }}</td>
                                         <td>
                                             <small class="text-black font-weight-medium d-block">{{ $course->nome_ccr }}</small>
                                             <span class="text-gray">
-                                              <span class="status-indicator rounded-indicator small bg-primary"></span>
+                                              <span class="status-indicator rounded-indicator small bg-{{ $course->sit_turma == 'Em Curso' ? 'success' : 'primary' }}"></span>
                                               {{ $course->desc_turma }}
                                             </span>
                                         </td>
@@ -211,7 +212,6 @@
                                         <td>{{ $course->sit_turma }}</td>
                                         <td class="text-center">{{ $course->ch_ccr }}</td>
                                         <td class="text-center">{{ $course->ch_docente }}</td>
-                                        <td class="text-center">{{ $course->ano }}.{{ $course->semestre }}</td>
                                     </tr>
                                 @empty
                                     <p>Nenhuma informação disponível.</p>
