@@ -208,7 +208,7 @@
                                               {{ $course->desc_turma }}
                                             </span>
                                         </td>
-                                        <td><small class="text-gray">{{ $course->curso_turma }}</small></td>
+                                        <td class="word-wrap"><small class="text-gray">{{ $course->curso_turma }}</small></td>
                                         <td>{{ $course->sit_turma }}</td>
                                         <td class="text-center">{{ $course->ch_ccr }}</td>
                                         <td class="text-center">{{ $course->ch_docente }}</td>
