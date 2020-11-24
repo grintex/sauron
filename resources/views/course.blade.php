@@ -45,7 +45,7 @@
             <!-- Navigation -->
             <div class="row pt-6">
               <div class="col-12 py-5">
-                <a href="{{ url('/') }}"><i class="mdi mdi-keyboard-backspace"></i> Voltar</a>
+                <a href="{{ url('/') }}" class="btn btn-primary"><i class="mdi mdi-keyboard-backspace"></i> Voltar</a>
               </div>
             </div>
             

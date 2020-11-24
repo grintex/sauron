@@ -58,9 +58,8 @@
 
     <div class="search-block">
         <div class="inner-header flex">
-            <img src="{{ asset('assets/images/package.svg') }}" title="Logo Dados UFFS" class="logo" />
-            <p class="subtitle pt-3 text-white">Uma forma fácil e acessível de visualizar todos os dados abertos da Univerisdade Federal da Fronteira Sul.</p>
- 
+            <img src="{{ asset('assets/images/undraw_file_searching.svg') }}" title="Logo Dados UFFS" />
+
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-12 col-md-10 col-lg-8 text-center">
@@ -70,7 +69,7 @@
                                 <button class="btn btn-dark" type="button"><i class="fa fa-search"></i> Pesquisar</button>
                             </div>
                         </div>
-                        <p class="small text-white"><i class="fa fa-info-circle"></i> Você pode pesquisar disciplinas, docentes e cursos.</p>
+                        <p class="small text-white"><i class="fa fa-info-circle"></i> Você pode pesquisar por nome de disciplinas, docentes e cursos.</p>
                     </div>
                 </div>
             </div>
@@ -80,12 +79,12 @@
 
     <section class="fdb-block" data-block-type="features" data-id="3" >
         <div class="container">
-            <div class="row text-center justify-content-center mt-5">
+            <div class="row text-center justify-content-center mt-4">
                 <div class="col-12 col-sm-4 col-xl-3 m-md-auto">
                     <img alt="image" class="fdb-icon"
                         src="{{ asset('assets/images/friendship.svg') }}">
-                    <h3><strong>Responsabilidade</strong></h3>
-                    <p>Detalhes do que está acontecendo com disciplinas, cursos e pessoas.</p>
+                    <h3><strong>Acesso</strong></h3>
+                    <p>Uma forma fácil de ver os dados abertos da <a href="https://www.uffs.edu.br">Univerisdade Federal da Fronteira Sul</a></p>
                 </div>
 
                 <div class="col-12 col-sm-4 col-xl-3 m-auto pt-4 pt-sm-0">

@@ -86,7 +86,7 @@
             <!-- Navigation -->
             <div class="row pt-6">
               <div class="col-12 py-5">
-                <a href="{{ url('/') }}"><i class="mdi mdi-keyboard-backspace"></i> Voltar</a>
+                <a href="{{ url('/') }}" class="btn btn-primary"><i class="mdi mdi-keyboard-backspace"></i> Voltar</a>
               </div>
             </div>
 
@@ -198,7 +198,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @forelse ($c ourses as $course)
+                                @forelse ($courses as $course)
                                     <tr>
                                         <td class="text-center">{{ $course->ano }}.{{ $course->semestre }}</td>
                                         <td>
