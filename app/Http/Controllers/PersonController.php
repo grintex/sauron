@@ -149,13 +149,13 @@ class PersonController extends Controller
     }
 
     private function getUserFromName($name) {
-        $user = DB::connection('uffs-personnel')->table('personnel')
-                            ->whereRaw('trim(name) = ?', $name)
+        $user = DB::connection('dados-uffs')->table('idx_professores')
+                            ->whereRaw('indexed_content LIKE ?', ['%'.$name.'%'])
                             ->first();
 
         if($user != null) {
             $user->bio = '';
-            $user->complement = !empty($user->department_name) ? $user->department_name . ' '.$user->department_address : $user->notes;
+            $user->complement = 'Docente';
         }
 
         return $user;
@@ -177,8 +177,8 @@ class PersonController extends Controller
             return view('notfound');
         }
 
-        $courses = $this->findCourses($name);
-        $research_projects = $this->findResearchProjects($name);
+        $courses = $this->findCourses($user->name);
+        $research_projects = $this->findResearchProjects($user->name);
         $lattes_info = $this->getLattesInfo($name);
         $doc_mentions = $this->findDocMentions($name);
 

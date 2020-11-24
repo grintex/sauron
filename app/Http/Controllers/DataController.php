@@ -59,22 +59,20 @@ class DataController extends Controller
             $result[$course->cod_ccr] = $item;
         }
 
-        $name_like = '%' . $term .'%';
-
-        $personnel = DB::connection('uffs-personnel')->table('personnel')
-                        ->whereRaw('name LIKE ? AND (notes LIKE ? OR notes LIKE ? OR notes LIKE ? OR department_name LIKE ?)', [$name_like, '%Prof%', '%Magisterio%', '%Docente%', '%Docente%'])
+        $personnel = DB::connection('dados-uffs')->table('idx_professores')
+                        ->whereRaw('indexed_content LIKE ?', [$like])
                         ->limit(10)
                         ->get();
 
         foreach($personnel as $person) {
-            $name = trim($person->name);
+            $name = Sanitizer::clean($person->name);
             $name_slug = str_replace(' ', '-', $name);
             $item = new stdClass();
             $item->url = url('/pessoa/' . $name_slug);
-            $item->name = $name;
-            $item->complement = !empty($person->department_name) ? $person->department_name . ' ('.$person->department_address.')' : $person->notes;
+            $item->name = ucwords($name);
+            $item->complement = 'Docente';
             
-            $result[$person->uid] = $item;
+            $result[$name_slug] = $item;
         }
 
         return array_values($result);

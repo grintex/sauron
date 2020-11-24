@@ -39,9 +39,87 @@ class IndexBuild extends Command
      */
     public function handle()
     {
+        $names = $this->buildAcademicIndexedContent();
+        $this->buildProfessorsIndexedContent($names);
+
+        $this->info('All complete!');
+
+        return 0;
+    }
+
+    protected function buildProfessorsIndexedContent(array $names) {
         $pdo = DB::connection('dados-uffs')->getPdo();
 
-        $this->line('Creating content table');
+        $this->comment('Creating professors table');
+
+        $pdo->beginTransaction();
+        $pdo->exec('DROP TABLE IF EXISTS idx_professores');
+        $pdo->exec('CREATE TABLE idx_professores (
+            id INTEGER PRIMARY KEY,
+            "name" TEXT,
+            "job" TEXT,
+            "email" TEXT,
+            "uid" TEXT,
+            "department_id" INTEGER,
+            "department_name" TEXT,
+            "department_initials" TEXT,
+            "department_address" TEXT,
+            "indexed_content" TEXT
+        )');
+        $pdo->commit();
+
+        $this->line(' Adding indexed content');
+
+        $pdo->beginTransaction();
+
+        $bar = $this->output->createProgressBar(count($names));
+        $bar->start();
+
+        foreach($names as $name) {
+            $qry = $pdo->prepare("INSERT INTO idx_professores
+                    (id, name, job, email, uid, department_id, department_name, department_initials, department_address, indexed_content) VALUES
+                    (NULL, ?, ?, ?, ?, ?, ?, ?, ?, ? )");
+
+            $job = '';
+            $email = '';
+            $uid = '';
+            $department_id = '';
+            $department_name = '';
+            $department_initials = '';
+            $department_address = '';
+            $indexed_content = $name . ' ' . Sanitizer::clean($name);
+
+            $qry->execute([
+                $name,
+                $job,
+                $email,
+                $uid,
+                $department_id,
+                $department_name,
+                $department_initials,
+                $department_address,
+                $indexed_content
+            ]);
+
+            $bar->advance();
+        }
+        $bar->finish();
+        $pdo->commit();
+
+        $this->newLine();
+        $this->line(' Creating index for improved performance');
+
+        $pdo->beginTransaction();
+        $pdo->exec("CREATE INDEX IF NOT EXISTS idx_professores_indexed_content ON idx_professores(indexed_content)");
+        $pdo->commit();
+    }
+
+    protected function buildAcademicIndexedContent()
+    {
+        $names = [];
+        $pdo = DB::connection('dados-uffs')->getPdo();
+
+        $this->comment('Creating academic content table');
 
         $pdo->beginTransaction();
         $pdo->exec('DROP TABLE IF EXISTS idx_graduacao_historico');
@@ -70,7 +148,7 @@ class IndexBuild extends Command
         $pdo->exec("INSERT INTO idx_graduacao_historico SELECT NULL, *, ' ' FROM 'graduacao_historico/graduacao_historico'");
         $pdo->commit();
 
-        $this->line('Adding indexed content');
+        $this->line(' Adding indexed content');
 
         $pdo->beginTransaction();
         
@@ -88,6 +166,7 @@ class IndexBuild extends Command
 
             if(is_array($members) && count($members) > 0) {
                 foreach($members as $participation) {
+                    $names[$participation->docente] = true;
                     $name = Sanitizer::removeDoubleSpaces($participation->docente);
                     $case_indexed_content .= $name . ' ';
                 }
@@ -112,14 +191,12 @@ class IndexBuild extends Command
         $pdo->commit();
 
         $this->newLine();
-        $this->line('Creating index for improved performance');
+        $this->line(' Creating index for improved performance');
 
         $pdo->beginTransaction();
-        $pdo->exec("CREATE INDEX IF NOT EXISTS idx_indexed_content ON idx_graduacao_historico(indexed_content)");
+        $pdo->exec("CREATE INDEX IF NOT EXISTS idx_graduacao_historico_indexed_content ON idx_graduacao_historico(indexed_content)");
         $pdo->commit();
 
-        $this->info('All complete!');
-
-        return 0;
+        return array_keys($names);
     }
 }
