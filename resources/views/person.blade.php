@@ -430,11 +430,49 @@
                 <hr />
               </div>
             </div>
+
             <div class="row">
-              <div class="col-12"> 
-                  <p class="text-danger"><i class="mdi mdi-alert-box-outline mdi-2x"></i> No momento, informações administrativas não estão disponíveis.</p>
+              <div class="col-12 py-1 mb-3">
+                <h4><i class="mdi mdi-certificate mdi-2x text-info"></i> Menção em documentos oficiais</h4>
+                <p class="text-gray">Há menção do nome <em>{{ $user->name }}</em> em {{ count($doc_mentions) }} documentos institucionais indexados.</p>
               </div>
-            </div>  
+            </div>
+
+            <div class="row">
+                <div class="col-md-12 equel-grid">
+                    <div class="grid">
+                        <div class="grid-body py-1"></div>
+                        <div class="container">
+                            <table class="table table-hover table-sm">
+                            <thead>
+                                <tr class="solid-header">
+                                    <th>Ano</th>
+                                    <th>Tipo</th>
+                                    <th>Titulo</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @forelse ($doc_mentions as $doc)
+                                    <tr>
+                                        <td>{{ $doc->ano }}</td>
+                                        <td>{{ ucwords($doc->tipo) }}</td>
+                                        <td class="word-wrap">
+                                            <small class="text-black font-weight-medium d-block">{{ $doc->titulo }}</small>
+                                            <span class="text-gray">
+                                              <span class="status-indicator rounded-indicator small bg-{{ $doc->tipo == 'edital' ? 'primary' : 'warning' }}"></span>
+                                              <a href="{{ $doc->link }}">{{ $doc->identification }}</a>
+                                            </span>
+                                        </td>
+                                    </tr>
+                                @empty
+                                    <p>Nenhuma menção desse docente em documentos oficiais indexados.</p>
+                                @endforelse
+                            </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
         <!-- content viewport ends -->
         <!-- partial:partials/_footer.html -->

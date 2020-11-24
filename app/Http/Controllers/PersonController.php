@@ -32,6 +32,35 @@ class PersonController extends Controller
         return $courses;
     }
 
+    private function findDocMentions($user) {
+        $person = DB::connection('dados-uffs-idx')->table('professores')
+                            ->whereRaw('nome LIKE ?', [$user->name])
+                            ->orderBy('ano', 'desc')
+                            ->first();
+
+        if($person == null) {
+            return [];
+        }
+
+        $docs_list = explode('|', $person->mencao_documentos_lista);
+
+        $docs = DB::connection('dados-uffs-idx')->table('documentos')
+                            ->select('path','ano', 'numero', 'tipo', 'emissor', 'titulo')
+                            ->whereIn('path', $docs_list)
+                            ->orderBy('ano', 'desc')
+                            ->orderBy('path', 'desc')
+                            ->get();
+
+        foreach($docs as $doc) {
+            $doc->identification = substr($doc->path, 0, strrpos($doc->path, '\\'));
+            $doc->identification = substr($doc->identification, 5);
+            $doc->identification = str_replace('\\', '/', $doc->identification);
+            $doc->link = 'https://www.uffs.edu.br/' . $doc->identification;
+        }
+
+        return $docs;
+    }
+
     private function deriveAcademicStats($courses) {
         $stats = array(
             'semester' => array(),
@@ -149,22 +178,24 @@ class PersonController extends Controller
         }
 
         $courses = $this->findCourses($user);
-        $researchProjects = $this->findResearchProjects($user);
-        $lattesInfo = $this->getLattesInfo($user);
-        
-        $academicStats = $this->deriveAcademicStats($courses);
-        $researchStats = $this->deriveResearchStats($researchProjects, $lattesInfo);
+        $research_projects = $this->findResearchProjects($user);
+        $lattes_info = $this->getLattesInfo($user);
+        $doc_mentions = $this->findDocMentions($user);
+
+        $academic_stats = $this->deriveAcademicStats($courses);
+        $research_stats = $this->deriveResearchStats($research_projects, $lattes_info);
         
         return view('person', [
             'user' => $user,
             'job' => str_replace('Docentes:', '', $user->department_name),
             'bio' => $user->complement,
             'place' => $user->department_address,
-            'research_projects' => $researchProjects,
+            'research_projects' => $research_projects,
             'extension_projects' => $this->findExtensionProjects($user),
             'courses' => $courses,
-            'research_stats' => $researchStats,
-            'academic_stats' => $academicStats
+            'doc_mentions' => $doc_mentions,
+            'research_stats' => $research_stats,
+            'academic_stats' => $academic_stats
         ]);
     }
 }

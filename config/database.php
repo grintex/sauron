@@ -59,6 +59,14 @@ return [
             'foreign_key_constraints' => env('DB_FOREIGN_KEYS', true),
         ],
 
+        'dados-uffs-idx' => [
+            'driver' => 'sqlite',
+            'url' => env('DATABASE_URL_UFFS_DADOS_IDX'),
+            'database' => env('DB_DATABASE_UFFS_DADOS_IDX', database_path('dados-uffs-idx.sqlite')),
+            'prefix' => '',
+            'foreign_key_constraints' => env('DB_FOREIGN_KEYS', true),
+        ],
+
         'mysql' => [
             'driver' => 'mysql',
             'url' => env('DATABASE_URL'),
