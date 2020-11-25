@@ -2,6 +2,7 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
+    @include('ga')
     <title>Transparência UFFS - Visualização de Dados Abertos - Universidade Federal da Fronteira Sul</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -182,12 +183,16 @@
 
                 <div class="col-12 col-md-4 col-lg-6 text-md-left mt-5 mt-md-0">
                     <h3><strong>Sobre</strong></h3>
-                    <p>Esse site é uma visualização dos dados contidos no <a href="https://dados.uffs.edu.br" target="_blank">Portal de Dados Abertos da UFFS</a>, que promove a abertura de dados públicos institucionais. Ele está embasado no Plano de Dados Abertos da UFFS de Janeiro de 2017 e segue determinação do <a href="http://www.planalto.gov.br/ccivil_03/_Ato2015-2018/2016/Decreto/D8777.htm" target="_blank">Decreto no 8.777, de 11 de maio de 2016.</p>
+                    <p>Esse site é uma visualização dos dados contidos no <a href="https://dados.uffs.edu.br" target="_blank">Portal de Dados Abertos da UFFS</a>, que promove a abertura de dados públicos institucionais. Ele está embasado no Plano de Dados Abertos da UFFS de Janeiro de 2017 e segue determinação do <a href="http://www.planalto.gov.br/ccivil_03/_Ato2015-2018/2016/Decreto/D8777.htm" target="_blank">Decreto no 8.777</a>, de 11 de maio de 2016.</p>
                 </div>
             </div>
 
             <div class="row mt-3">
-                <div class="col text-center">
+                <div class="col text-sm-center">
+                    <p class="text-small" style="font-size: 0.8em;">
+                        This website is based on <a href="https://themewagon.com/themes/free-responsive-bootstrap-4-admin-dashboard-template-label">Label template</a>. Icons made by <a href="https://www.flaticon.com/authors/freepik">Freepik</a> from www.flaticon.com.
+                        Os dados mostrados nesse site foram agregados de forma automatizada. Não há garantias que eles estejam completamente corretos. Se houver houver algo de errado, entre em contato.
+                    </p>
                 </div>
             </div>
         </div>

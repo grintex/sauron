@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    @include('ga')
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>{{ $user->name }} - Relatório de Transparência - UFFS</title>
@@ -389,6 +390,7 @@
                                       <th style="width: 5%;">Data</th>
                                       <th style="width: 15%;">Registro</th>
                                       <th style="width: 65%;">Título</th>
+                                      <th style="width: 10%;">Situação</th>
                                       <th style="width: 5%;">Campus</th>
                                   </tr>
                               </thead>
@@ -408,6 +410,7 @@
                                                   <span class="status-indicator rounded-indicator small bg-primary"></span> {{ $project->desc_area_cnpq }}
                                               </span>
                                           </td> 
+                                          <td>{{ $project->situacao }}</td> 
                                           <td>{{ $project->nome_campus }}</td> 
                                       </tr>
                                   @endforeach
