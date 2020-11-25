@@ -131,7 +131,7 @@
             </div>
       
             <div class="col-12 ml-md-auto col-md-7 col-lg-6 pb-5 pb-md-0">
-              <h1>Porque ele foi criado?</h1>
+              <h1>Por que ele foi criado?</h1>
               <p class="lead">Para que qualquer entidade, seja cidadão ou órgão público, consulte os dados referentes à UFFS.</p>
               <p>Mais do que apenas listar informações, esse site contextualiza dados de diferentes fontes. Por exemplo, você pode pesquisar pelo nome de uma disciplina e saber seu historico de reprovações. Ou você pode conhecer sobre as ações de pesquisa de um terminado docente.</p>
             </div>
