@@ -91,6 +91,16 @@
               </div>
             </div>
 
+            <div class="row">
+              <div class="col-12 py-4">
+                <div class="alert alert-info" role="alert">
+                  <strong>Importante!</strong> As informações listadas nessa página foram coletadas de forma automatizada e não contemplam a totalidade de atividades desse docente. Há atividades que a UFFS não publica em seu portal de dados abertos, como aulas da pós-graduação, participação em conselhos, comissões, colegiados, etc. Consequentemente, essas informações não estão contempladas nesse site. Estamos ativamente trabalhando para solicitar que a UFFS publique esses dados e, também, que mais fontes sejam indexadas (como grupos de pesquisa, atas, etc). Recomendamos que o Currículo Lattes e os memoriais descritivos (documento oficial da UFFS) do docente em questão sejam consultados para maiores informações.
+                </div>
+              </div>
+            </div>
+
+            
+
             <!-- Informações gerais -->
             <a name="apresentacao"></a>
             <div class="row">
@@ -246,7 +256,7 @@
             <div class="row">
                 <div class="col-md-12 equel-grid">
                     @if (count($research_projects) === 0)
-                      <p><i class="mdi mdi-alert-circle-outline text-danger"></i> Esse docente não está vinculado a projetos de pesquisa conhecidos pela instituição.</p>
+                      <p><i class="mdi mdi-alert-circle-outline text-danger"></i> Esse docente não está mencionado em projetos de pesquisa divulgados pela instituição em seus dados abertos.</p>
                     @else
                       <div class="grid">
                           <div class="table-responsive">
@@ -296,7 +306,7 @@
 
             <div class="row">
               <div class="col-12"> 
-                  <p class="text-danger"><i class="mdi mdi-alert-box-outline mdi-2x"></i> No momento, informações sobre publicações científicas não estão disponíveis.</p>
+                  <p class="text-danger"><i class="mdi mdi-alert-box-outline mdi-2x"></i> No momento, informações sobre publicações científicas não estão disponíveis. Consulte o Currículo Lattes desse docente para maiores informações.</p>
               </div>
             </div>  
 
@@ -380,7 +390,7 @@
             <div class="row">
                 <div class="col-md-12 equel-grid">
                     @if (count($extension_projects) === 0)
-                      <p><i class="mdi mdi-alert-circle-outline text-danger"></i> Esse docente não está vinculado a projetos de extensão conhecidos pela instituição.</p>
+                      <p><i class="mdi mdi-alert-circle-outline text-danger"></i> Esse docente não está mencionado em projetos de extensão divulgados pela instituição em seus dados abertos.</p>
                     @else
                       <div class="grid">
                           <div class="table-responsive">
