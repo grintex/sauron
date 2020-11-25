@@ -135,12 +135,17 @@ class PersonController extends Controller
     }
 
     private function findExtensionProjects($user_name) {
-        $projects = DB::connection('dados-uffs')->table('projetos_extensao/projetos_extensao')
+        $projects_general = DB::connection('dados-uffs')->table('projetos_extensao/projetos_extensao')
                             ->where('coordenador', 'like', '%' . $user_name . '%')
                             ->orderBy('ano', 'desc')
                             ->get();
 
-        return $projects;
+        $projects_culture = DB::connection('dados-uffs')->table('projetos_cultura/projetos_cultura')
+                            ->where('coordenador', 'like', '%' . $user_name . '%')
+                            ->orderBy('ano', 'desc')
+                            ->get();
+
+        return $projects_general->merge($projects_culture);
     }
 
     private function getLattesInfo($user_name) {
