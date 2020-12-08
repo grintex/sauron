@@ -42,14 +42,20 @@ class PersonController extends Controller
             return [];
         }
 
-        $docs_list = explode('|', $person->mencao_documentos_lista);
+        $mentions = explode('|', $person->mencao_documentos_lista);
+        $docs = collect();
 
-        $docs = DB::connection('dados-uffs-idx')->table('documentos')
-                            ->select('path','ano', 'numero', 'tipo', 'emissor', 'titulo')
-                            ->whereIn('path', $docs_list)
-                            ->orderBy('ano', 'desc')
-                            ->orderBy('path', 'desc')
-                            ->get();
+        foreach (collect($mentions)->chunk(512) as $docs_list) {
+            $docs_chunk = DB::connection('dados-uffs-idx')->table('documentos')
+                                ->select('path','ano', 'numero', 'tipo', 'emissor', 'titulo')
+                                ->whereIn('path', $docs_list)
+                                ->orderBy('ano', 'desc')
+                                ->orderBy('path', 'desc')
+                                ->get();
+            $docs = $docs->merge($docs_chunk);
+        }
+
+        $docs = $docs->sortByDesc('ano');
 
         foreach($docs as $doc) {
             $doc->identification = substr($doc->path, 0, strrpos($doc->path, '\\'));
