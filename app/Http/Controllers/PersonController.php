@@ -160,13 +160,13 @@ class PersonController extends Controller
     }
 
     private function getUserFromName($name) {
-        $user = DB::connection('dados-uffs')->table('idx_professores')
+        $user = DB::table('personnel')
                             ->whereRaw('indexed_content LIKE ?', ['%'.$name.'%'])
                             ->first();
 
         if($user != null) {
             $user->bio = '';
-            $user->complement = 'Docente';
+            $user->complement = $user->job;
         }
 
         return $user;

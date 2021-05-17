@@ -25,25 +25,12 @@ class DataController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
-    {
-        $pdo = DB::connection()->getPdo();
-        
-        return ['test' => 'dd'];
-    }
-
-    /**
-     * 
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function search(Request $request)
     {
         $term = $request->get('q', '');
         $like = '%' . Sanitizer::clean($term) .'%';
 
-        $courses = DB::connection('dados-uffs')->table('idx_graduacao_historico')
+        $courses = DB::table('graduacao_historico')
                         ->whereRaw('indexed_content LIKE ?', [$like])
                         ->limit(15)
                         ->get();
@@ -59,7 +46,7 @@ class DataController extends Controller
             $result[$course->cod_ccr] = $item;
         }
 
-        $personnel = DB::connection('dados-uffs')->table('idx_professores')
+        $personnel = DB::table('personnel')
                         ->whereRaw('indexed_content LIKE ?', [$like])
                         ->limit(10)
                         ->get();
@@ -70,7 +57,7 @@ class DataController extends Controller
             $item = new stdClass();
             $item->url = url('/pessoa/' . $name_slug);
             $item->name = ucwords($name);
-            $item->complement = 'Docente';
+            $item->complement = $person->job;
             
             $result[$name_slug] = $item;
         }
