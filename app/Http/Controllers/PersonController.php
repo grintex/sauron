@@ -33,16 +33,16 @@ class PersonController extends Controller
     }
 
     private function findDocMentions($user_name) {
-        $person = DB::connection('dados-uffs-idx')->table('professores')
-                            ->whereRaw('nome LIKE ?', [$user_name])
-                            ->orderBy('ano', 'desc')
-                            ->first();
+        $mention = DB::table('mentions')
+                        ->whereRaw('name_slug LIKE ?', [$user_name])
+                        ->orderBy('ano', 'desc')
+                        ->first();
 
-        if($person == null) {
+        if($mention == null) {
             return [];
         }
 
-        $mentions = explode('|', $person->mencao_documentos_lista);
+        $mentions = explode('|', $mention->documents);
         $docs = collect();
 
         foreach (collect($mentions)->chunk(512) as $docs_list) {
@@ -58,10 +58,13 @@ class PersonController extends Controller
         $docs = $docs->sortByDesc('ano');
 
         foreach($docs as $doc) {
-            $doc->identification = substr($doc->path, 0, strrpos($doc->path, '\\'));
-            $doc->identification = substr($doc->identification, 5);
-            $doc->identification = str_replace('\\', '/', $doc->identification);
-            $doc->link = 'https://www.uffs.edu.br/' . $doc->identification;
+            $doc->identification = ucwords($doc->tipo) . ' ' . implode('/', [
+                strtoupper($doc->emissor),
+                $doc->ano,
+                $doc->numero]
+            );
+            $url = implode('/', ['atos-normativos', $doc->tipo, $doc->emissor, $doc->ano . '-' .sprintf('%04d', $doc->numero)]);
+            $doc->link = 'https://www.uffs.edu.br/' . $url;
         }
 
         return $docs;

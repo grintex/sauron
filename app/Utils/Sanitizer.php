@@ -5,12 +5,20 @@ namespace App\Utils;
 class Sanitizer
 {
     public static function clean($str) {
-        return strtolower(self::removeDoubleSpaces(self::removeAccents($str)));
+        $str = self::removeAccents($str);
+        $str = self::removeNonAlphanumeric($str);
+        $str = self::removeDoubleSpaces($str);
+
+        return strtolower(trim($str));
     }
 
     public static function removeDoubleSpaces($str) {
         return preg_replace('/\s+/', ' ', $str);
     }
+
+    public static function removeNonAlphanumeric($str) {
+        return preg_replace('/[^a-zA-Z\d\s]/i', ' ', $str);
+    }    
 
     public static function removeAccents($string) {
         if ( !preg_match('/[\x80-\xff]/', $string) )

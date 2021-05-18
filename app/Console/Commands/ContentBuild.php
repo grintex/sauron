@@ -13,7 +13,7 @@ class ContentBuild extends Command
      *
      * @var string
      */
-    protected $signature = 'content:build';
+    protected $signature = 'content:init';
 
     /**
      * The console command description.
@@ -64,6 +64,7 @@ class ContentBuild extends Command
         $db->exec('DROP TABLE IF EXISTS personnel');
         $db->exec('CREATE TABLE personnel (
             id INTEGER PRIMARY KEY,
+            "name_slug" TEXT,
             "name" TEXT,
             "job" TEXT,
             "has_taught" INTEGER,
@@ -87,31 +88,33 @@ class ContentBuild extends Command
 
         while (($row = $stmt->fetch(\PDO::FETCH_ASSOC)) !== false) {
             $qry = $db->prepare("INSERT INTO personnel
-                    (id, name, job, has_taught, email, uid, department_id, department_name, department_initials, department_address, indexed_content) VALUES
-                    (NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )");
+                    (id, name_slug, name, job, has_taught, email, uid, department_id, department_name, department_initials, department_address, indexed_content) VALUES
+                    (NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )");
 
             $name = $row['name'];
+            $nameSlug = Sanitizer::clean($row['name']);            
             $job = (isset($row['job']) ? $row['job'] : '') . (isset($row['notes']) ? $row['notes'] : '');
-            $has_taught = in_array($name, $professors) ? 1 : 0;
+            $hasTaught = in_array($name, $professors) ? 1 : 0;
             $email = $row['email'];
             $uid = $row['uid'];
-            $department_id = $row['department_id'];
-            $department_name = $row['department_name'];
-            $department_initials = $row['department_initials'];
-            $department_address = $row['department_address'];
-            $indexed_content = $name . ' ' . Sanitizer::clean($name);
+            $departmentId = $row['department_id'];
+            $departmentName = $row['department_name'];
+            $departmentInitials = $row['department_initials'];
+            $departmentAddress = $row['department_address'];
+            $indexedContent = $name . ' ' . Sanitizer::clean($name);
 
             $qry->execute([
+                $nameSlug,
                 $name,
                 $job,
-                $has_taught,
+                $hasTaught,
                 $email,
                 $uid,
-                $department_id,
-                $department_name,
-                $department_initials,
-                $department_address,
-                $indexed_content
+                $departmentId,
+                $departmentName,
+                $departmentInitials,
+                $departmentAddress,
+                $indexedContent
             ]);
 
             $bar->advance();
