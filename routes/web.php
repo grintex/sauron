@@ -13,8 +13,9 @@
 
 Route::get('/', 'App\Http\Controllers\HomeController@index');
 
-Route::get('/pessoa/{key}', 'App\Http\Controllers\PersonController@show');
+Route::get('/pessoa/{key}', 'App\Http\Controllers\PersonController@show')->name('person.show');
 Route::get('/disciplina/{key}', 'App\Http\Controllers\CourseController@show');
+Route::get('/mencoes', 'App\Http\Controllers\MentionsController@show');
 
 // Embeds
 Route::get('/embed/disciplina-historico/{key}', 'App\Http\Controllers\EmbedCourseController@show');
