@@ -10,7 +10,7 @@ use stdClass;
 class CourseController extends Controller
 {
     protected function findCourseHistory($id) {
-        $stats = DB::connection('sqlite')->select("
+        $stats = DB::connection('dados-uffs')->select("
         SELECT
             sit_turma,
             COUNT(sit_turma) qtd_sit_turma,
